@@ -1,0 +1,35 @@
+body {
+  font-family: Inter;
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header {
+  text-align: center;
+}
+
+header > nav {
+  gap: 0.5rem;
+  display: flex;
+  justify-content: center;
+  margin-top: -1rem;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  vertical-align: top;
+  padding: 0.5rem 1rem;
+}
+
+td > img {
+  width: 20rem;
+  height: 10rem;
+}
