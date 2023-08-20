@@ -1,4 +1,120 @@
-h1 {
-  font-size: 10rem;
-  color: red;
+:root {
+  --primary-blue-100: #cfd4ed;
+  --primary-blue-200: #aeb7e1;
+  --primary-blue-300: #8d9ad5;
+  --primary-blue-400: #0d28a6;
+  --primary-blue-500: #091b6f;
+  --primary-green-100: #def1df;
+  --primary-green-200: #c9e7ca;
+  --primary-green-300: #92d094;
+  --primary-green-400: #5cb85f;
+  --primary-green-500: #3d7b3f;
+  --primary-neutral-100: #ffffff;
+  --primary-neutral-200: #d0d0d0;
+  --primary-neutral-300: #8a8a8a;
+  --primary-neutral-400: #3c3c3c;
+  --primary-neutral-500: #151515;
+  --alert-error: #fa2c5a;
+  --alert-warning: #f9cc00;
+  --alert-success: #73ca5c;
 }
+
+body {
+  font-family: Helvetica;
+}
+
+.container {
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.reset-padding {
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}
+
+/* Start - Components */
+.btn {
+  border: 0;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 2px;
+}
+
+/* End - Components */
+
+/* Start - Header */
+
+.header {
+  background-color: #f1f3ff;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-blue-500);
+}
+
+.header__nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.header__nav-item {
+  text-decoration: none;
+  color: black;
+}
+
+.header__btn-register {
+  background-color: var(--primary-green-400);
+}
+
+/* End - Header */
+
+/* Start - Homepage */
+
+.homepage {
+  background-color: #f1f3ff;
+  display: flex;
+}
+
+.homepage__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* 56rem = 596px / 4xl */
+@media screen and (max-width: 56rem) {
+  .homepage__container {
+    flex-direction: column;
+  }
+}
+
+.homepage__title {
+  margin: 0;
+  font-size: 36px;
+}
+
+.homepage__description {
+  margin-top: 2rem;
+}
+
+.homepage__btn {
+  background-color: var(--primary-green-400);
+}
+
+.homepage__image {
+  width: 100%;
+}
+
+/* End - Homepage */
