@@ -5,40 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <header class="header">
-      <div class="container header__container">
-        <h2 class="header__title">Rent a Car</h2>
-        <nav class="header__nav">
-          <a class="header__nav-item" href="#">Our Services</a>
-          <a class="header__nav-item" href="#">Why Us</a>
-          <a class="header__nav-item" href="#">Testimonial</a>
-          <a class="header__nav-item" href="#">FAQ</a>
-          <a class="header__nav-item" href="#">Testimonial</a>
-          <button class="btn header__btn-register">Register</button>
-        </nav>
-      </div>
+    <header class="header sticky-top">
+      <nav class="navbar navbar-expand-lg py-2">
+        <div class="container">
+          <a class="navbar-brand" href="#">Rent a Car</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Home </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Link</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Our services</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Why Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Testimonial</a>
+              </li>
+              <button class="btn btn-success">Register</button>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <main>
       <section class="homepage">
-        <div class="container homepage__container">
-          <div class="homepage__text">
-            <h1 class="homepage__title">
+        <div class="container homepage__container mt-4">
+          <div>
+            <h1 class="fw-bold">
               Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)
             </h1>
-            <p class="homepage__description">
+            <p class="mt-4">
               Selamat datang di Rent a Car. Kami menyediakan mobil kualitas
               terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
               untuk sewa mobil selama 24 jam.
             </p>
-            <button class="btn homepage__btn">Mulai Sewa Mobil</button>
+            <button class="btn btn-success fw-bold">Mulai Sewa Mobil</button>
           </div>
-          <img class="homepage__image" src="assets/car.svg" alt="car" />
+          <img class="img-fluid" src="assets/img/car.svg" alt="car" />
+        </div>
+      </section>
+      <section class="our-service">
+        <div class="our-service__container container">
+          <img class="img-fluid" src="assets/img/services.svg" />
+          <section class="our-service__text">
+            <h2 class="fw-bold">
+              Best Car Rental for any kind of trip in (Lokasimu)!
+            </h2>
+            <p>
+              Sewa mobil di (Lokasimu) bersama Binar Car Rental jaminan harga
+              lebih murah dibandingkan yang lain, kondisi mobil baru, serta
+              kualitas pelayanan terbaik untuk perjalanan wisata, bisnis,
+              wedding, meeting, dll.
+            </p>
+            <ul class="our-service__list-container">
+              <li class="our-service__list-item">
+                <img src="assets/icon/checkmark.svg" />
+                <p class="m-0">Sewa Mobil Dengan Supir di Bali 12 Jam</p>
+              </li>
+              <li class="our-service__list-item">
+                <img src="assets/icon/checkmark.svg" />
+                <p class="m-0">Sewa Mobil Lepas Kunci di Bali 24 Jam</p>
+              </li>
+              <li class="our-service__list-item">
+                <img src="assets/icon/checkmark.svg" />
+                <p class="m-0">Sewa Mobil Jangka Panjang Bulanan</p>
+              </li>
+              <li class="our-service__list-item">
+                <img src="assets/icon/checkmark.svg" />
+                <p class="m-0">Gratis Antar - Jemput Mobil di Bandara</p>
+              </li>
+              <li class="our-service__list-item">
+                <img src="assets/icon/checkmark.svg" />
+                <p class="m-0">Layanan Airport Transfer / Drop In Out</p>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+      <section class="why-us">
+        <div class="container why-us__container">
+          <h2 class="fw-bold">Why Us?</h2>
+          <p>Mengapa harus pilih Binar Car Rental?</p>
+          <section class="why-us__card-container">
+            <article class="why-us__card">
+              <img src="assets/icon/like.svg" />
+              <h3 class="fw-semibold">Mobil Lengkap</h3>
+              <p>
+                Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
+                terawat
+              </p>
+            </article>
+            <article class="why-us__card">
+              <img src="assets/icon/bookmark.svg" />
+              <h3 class="fw-semibold">Harga Murah</h3>
+              <p>
+                Harga murah dan bersaing, bisa bandingkan harga kami dengan
+                rental mobil lain
+              </p>
+            </article>
+            <article class="why-us__card">
+              <img src="assets/icon/like.svg" />
+              <h3 class="fw-semibold">Layanan 24 Jam</h3>
+              <p>
+                Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
+                tersedia di akhir minggu
+              </p>
+            </article>
+            <article class="why-us__card">
+              <img src="assets/icon/like.svg" />
+              <h3 class="fw-semibold">Sopir Professional</h3>
+              <p>
+                Sopir yang profesional, berpengalaman, jujur, ramah dan selalu
+                tepat waktu
+              </p>
+            </article>
+          </section>
         </div>
       </section>
     </main>
