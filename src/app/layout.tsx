@@ -3,16 +3,16 @@ import '@/styles/globals.scss';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
-type CustomMetaData = Pick<Metadata, 'title' | 'description'> & {
+type CustomMetadata = Pick<Metadata, 'title' | 'description'> & {
   image: string;
 };
 
-const { title, description, image }: CustomMetaData = {
+const { title, description, image }: CustomMetadata = {
   title: 'Binar Academy',
   description:
     'This is a list of the assignments that I have done during the Binar Academy.',
@@ -58,9 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children
-}: {
-  children: ReactNode;
-}): JSX.Element {
+}: PropsWithChildren): JSX.Element {
   return (
     <html lang='en'>
       <body className={inter.className}>
