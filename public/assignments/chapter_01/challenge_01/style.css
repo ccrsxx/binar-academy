@@ -29,11 +29,6 @@ body {
   padding: 0 2rem;
 }
 
-.reset-padding {
-  margin: 0 -1rem;
-  padding: 0 1rem;
-}
-
 /* Start - Components */
 .btn-success {
   background-color: var(--primary-green-400);
@@ -45,11 +40,28 @@ body {
 
 .header {
   background-color: rgba(241, 243, 255, 0.6);
-  backdrop-filter: blur(12px);
 }
 
 .nav-item {
   margin-right: 1rem;
+}
+
+.offcanvas-body {
+  margin-top: -2rem;
+}
+
+.navbar-nav {
+  gap: 0.25rem;
+}
+
+@media screen and (min-width: 56rem) {
+  .offcanvas-body {
+    margin-top: initial;
+  }
+
+  .navbar-nav {
+    gap: initial;
+  }
 }
 
 /* End - Header */
@@ -65,15 +77,15 @@ body {
 
 .homepage__container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: 4rem;
 }
 
 /* 56rem = 596px / 4xl */
-@media screen and (max-width: 56rem) {
+@media screen and (min-width: 56rem) {
   .homepage__container {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -89,12 +101,12 @@ body {
   display: flex;
   gap: 6rem;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-@media screen and (max-width: 56rem) {
+@media screen and (min-width: 56rem) {
   .our-service__container {
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -142,3 +154,50 @@ body {
 }
 
 /* End - Why Us */
+
+/* Start - Testimonial */
+.testimonial {
+  margin: 4rem 0;
+}
+
+.testimonial__container {
+  display: grid;
+  text-align: center;
+  gap: 2rem;
+}
+
+.carousel {
+  background-color: rgba(241, 243, 255);
+  max-width: 56rem;
+  border-radius: 0.5rem;
+  text-align: initial;
+}
+
+.carousel-item__container {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  margin: 4rem 5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-item__rating {
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 56rem) {
+  .carousel-item__container {
+    flex-direction: row;
+    margin: 4rem 8rem;
+  }
+
+  .carousel-item__rating {
+    margin: initial;
+  }
+}
+
+.carousel-item__text {
+  display: grid;
+  gap: 1rem;
+}

@@ -25,40 +25,57 @@
     ></script>
   </head>
   <body>
-    <header class="header sticky-top">
+    <header class="sticky-top header">
       <nav class="navbar navbar-expand-lg py-2">
         <div class="container">
           <a class="navbar-brand" href="#">Rent a Car</a>
           <button
             class="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">Home </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link active">Link</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link active">Our services</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link active">Why Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link active">Testimonial</a>
-              </li>
-              <button class="btn btn-success">Register</button>
-            </ul>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title fw-semibold" id="offcanvasNavbarLabel">
+                Rent a Car
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">Our services</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">Our services</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">Why Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link active">Testimonial</a>
+                </li>
+                <button class="btn btn-success me-auto">Register</button>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -156,6 +173,92 @@
               </p>
             </article>
           </section>
+        </div>
+      </section>
+      <section class="testimonial">
+        <div class="testimonial__container container">
+          <h2 class="fw-bold">Testimonial</h2>
+          <p>Berbagai review positif dari pelanggan kami</p>
+          <div id="carouselExample" class="carousel slide mx-auto">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="carousel-item__container">
+                  <img src="assets/img/avatar.svg" alt="Avatar" />
+                  <div class="carousel-item__text">
+                    <img
+                      class="carousel-item__rating"
+                      src="assets/icon/five-stars.svg"
+                      alt="Five stars"
+                    />
+                    <p class="mb-0">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Adipisci unde laudantium veritatis quae, debitis
+                      cupiditate ipsam quibusdam sequi minus, id nulla in aut
+                      accusamus beatae maiores deleniti quisquam est blanditiis?
+                    </p>
+                    <h3 class="fw-bold mb-0 h5">John Doe</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-item__container">
+                  <img src="assets/img/avatar.svg" alt="Avatar" />
+                  <div class="carousel-item__text">
+                    <img
+                      class="carousel-item__rating"
+                      src="assets/icon/five-stars.svg"
+                      alt="Five stars"
+                    />
+                    <p class="mb-0">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Adipisci unde laudantium veritatis quae, debitis
+                      cupiditate ipsam quibusdam sequi minus, id nulla in aut
+                      accusamus beatae maiores deleniti quisquam est blanditiis?
+                    </p>
+                    <h3 class="fw-bold mb-0 h5">John Doe</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-item__container">
+                  <img src="assets/img/avatar.svg" alt="Avatar" />
+                  <div class="carousel-item__text">
+                    <img
+                      class="carousel-item__rating"
+                      src="assets/icon/five-stars.svg"
+                      alt="Five stars"
+                    />
+                    <p class="mb-0">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Adipisci unde laudantium veritatis quae, debitis
+                      cupiditate ipsam quibusdam sequi minus, id nulla in aut
+                      accusamus beatae maiores deleniti quisquam est blanditiis?
+                    </p>
+                    <h3 class="fw-bold mb-0 h5">John Doe</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="prev"
+            >
+              <img src="assets/" alt="" />
+              <img src="assets/icon/chevron-left.svg" alt="Previous" />
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="next"
+            >
+              <img src="assets/icon/chevron-right.svg" alt="Next" />
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
       </section>
     </main>
