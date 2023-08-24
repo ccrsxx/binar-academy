@@ -29,6 +29,11 @@ body {
   padding: 0 2rem;
 }
 
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 /* Start - Components */
 .btn-success {
   background-color: var(--primary-green-400);
@@ -39,7 +44,7 @@ body {
 /* Start - Header */
 
 .header {
-  background-color: rgba(241, 243, 255, 0.6);
+  background-color: rgba(241, 243, 255);
 }
 
 .nav-item {
@@ -121,7 +126,6 @@ body {
 }
 
 .our-service__list-item {
-  list-style-type: none;
   display: flex;
   gap: 1rem;
 }
@@ -173,11 +177,27 @@ body {
   text-align: initial;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+  height: fit-content;
+  transform: scaleX(0.8);
+  margin: initial;
+  margin-top: 4rem;
+}
+
+.carousel-control-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .carousel-item__container {
   display: flex;
   align-items: start;
   gap: 1rem;
-  margin: 4rem 5rem;
+  margin: 4rem 4rem;
   flex-direction: column;
   align-items: center;
 }
@@ -186,7 +206,18 @@ body {
   margin: 0 auto;
 }
 
+.carousel-item__text {
+  display: grid;
+  gap: 1rem;
+}
+
 @media screen and (min-width: 56rem) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    transform: initial;
+    margin: auto 0;
+  }
+
   .carousel-item__container {
     flex-direction: row;
     margin: 4rem 8rem;
@@ -197,7 +228,109 @@ body {
   }
 }
 
-.carousel-item__text {
+/* End - Testimonial */
+
+/* Start - CTA  */
+
+.cta {
+  margin: 4rem 0;
+  color: white;
+}
+
+.cta__banner {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 4rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary-blue-400);
+}
+
+.cta__description {
+  max-width: 28rem;
+}
+
+/* End - CTA */
+
+/* Start - FAQ */
+.faq {
+  margin: 4rem 0;
+}
+
+.faq__container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 56rem) {
+  .faq__container {
+    flex-direction: row;
+  }
+}
+
+.faq__text {
+  width: 100%;
+  max-width: 32rem;
+}
+
+.accordion {
   display: grid;
   gap: 1rem;
+  width: 100%;
 }
+
+.accordion-item,
+.accordion-button {
+  border: var(--bs-accordion-border-width) solid
+    var(--bs-accordion-border-color) !important;
+  border-radius: var(--bs-accordion-border-radius) !important;
+}
+
+.accordion-button {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* End - FAQh */
+
+/* Start - Footer */
+
+.footer {
+  margin: 4rem 0;
+}
+
+.footer__container {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.footer__section {
+  width: 100%;
+  max-width: initial;
+}
+
+.footer__section-item {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer_section-nav {
+  display: grid;
+  gap: 1rem;
+  justify-content: initial;
+}
+
+@media screen and (min-width: 56rem) {
+  .footer__section {
+    max-width: 16rem;
+  }
+
+  .footer__section-nav {
+    justify-content: center;
+  }
+}
+
+/* End - Footer */
