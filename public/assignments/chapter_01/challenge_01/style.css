@@ -14,10 +14,13 @@
   --primary-neutral-300: #8a8a8a;
   --primary-neutral-400: #3c3c3c;
   --primary-neutral-500: #151515;
+  --primary-homepage: #f1f3ff;
   --alert-error: #fa2c5a;
   --alert-warning: #f9cc00;
   --alert-success: #73ca5c;
 }
+
+/* Start - Base */
 
 body {
   font-family: Helvetica;
@@ -34,6 +37,12 @@ ul {
   padding-left: 0;
 }
 
+main > .container {
+  margin: 4rem auto;
+}
+
+/* End - Base */
+
 /* Start - Components */
 .btn-success {
   background-color: var(--primary-green-400);
@@ -44,19 +53,33 @@ ul {
 /* Start - Header */
 
 .header {
-  background-color: rgba(241, 243, 255);
+  background-color: var(--primary-homepage);
 }
 
 .nav-item {
   margin-right: 1rem;
 }
 
+.offcanvas {
+  max-width: 12rem;
+}
+
+@media screen and (min-width: 56rem) {
+  .offcanvas {
+    max-width: initial;
+  }
+}
+
 .offcanvas-body {
   margin-top: -2rem;
 }
 
-.navbar-nav {
-  gap: 0.25rem;
+.navbar {
+  padding: 1rem 0;
+}
+
+.navbar-toggler {
+  border: 0;
 }
 
 @media screen and (min-width: 56rem) {
@@ -73,10 +96,10 @@ ul {
 
 /* Start - Homepage */
 
-.homepage {
+#homepage {
   margin-top: -4rem;
-  padding-top: 4rem;
-  background-color: #f1f3ff;
+  padding-top: 6rem;
+  background-color: var(--primary-homepage);
   display: flex;
 }
 
@@ -87,10 +110,25 @@ ul {
   gap: 4rem;
 }
 
-/* 56rem = 596px / 4xl */
+.homepage_car-wrapper {
+  width: 100%;
+}
+
+.homepage__car-container {
+  margin-right: -2rem;
+}
+
+.homepage__car {
+  width: 100%;
+}
+
 @media screen and (min-width: 56rem) {
   .homepage__container {
     flex-direction: row;
+  }
+
+  .homepage__text {
+    margin-bottom: 2rem;
   }
 }
 
@@ -98,11 +136,7 @@ ul {
 
 /* Start - Our Service */
 
-.our-service {
-  margin: 4rem 0;
-}
-
-.our-service__container {
+#our-services {
   display: flex;
   gap: 6rem;
   justify-content: center;
@@ -110,22 +144,22 @@ ul {
 }
 
 @media screen and (min-width: 56rem) {
-  .our-service__container {
+  #our-services {
     flex-direction: row;
   }
 }
 
-.our-service__text {
+.our-services__text {
   max-width: 30rem;
 }
 
-.our-service__list-container {
+.our-services__list-container {
   display: grid;
   gap: 1rem;
   padding-left: 0;
 }
 
-.our-service__list-item {
+.our-services__list-item {
   display: flex;
   gap: 1rem;
 }
@@ -134,10 +168,6 @@ ul {
 
 /* Start - Why Us  */
 .why-us {
-  margin: 4rem 0;
-}
-
-.why-us__container {
   display: grid;
   gap: 1rem;
 }
@@ -160,18 +190,14 @@ ul {
 /* End - Why Us */
 
 /* Start - Testimonial */
-.testimonial {
-  margin: 4rem 0;
-}
-
-.testimonial__container {
+#testimonial {
   display: grid;
   text-align: center;
   gap: 2rem;
 }
 
 .carousel {
-  background-color: rgba(241, 243, 255);
+  background-color: var(--primary-homepage);
   max-width: 56rem;
   border-radius: 0.5rem;
   text-align: initial;
@@ -180,9 +206,9 @@ ul {
 .carousel-control-prev,
 .carousel-control-next {
   height: fit-content;
-  transform: scaleX(0.8);
-  margin: initial;
-  margin-top: 4rem;
+  transform: scale(0.4, 0.6);
+  margin: auto 0.5rem;
+  margin-top: 2rem;
 }
 
 .carousel-control-container {
@@ -197,7 +223,7 @@ ul {
   display: flex;
   align-items: start;
   gap: 1rem;
-  margin: 4rem 4rem;
+  margin: 2rem;
   flex-direction: column;
   align-items: center;
 }
@@ -232,12 +258,8 @@ ul {
 
 /* Start - CTA  */
 
-.cta {
-  margin: 4rem 0;
-  color: white;
-}
-
 .cta__banner {
+  color: white;
   display: grid;
   justify-items: center;
   text-align: center;
@@ -254,18 +276,14 @@ ul {
 /* End - CTA */
 
 /* Start - FAQ */
-.faq {
-  margin: 4rem 0;
-}
-
-.faq__container {
+#faq {
   display: flex;
   gap: 2rem;
   flex-direction: column;
 }
 
 @media screen and (min-width: 56rem) {
-  .faq__container {
+  #faq {
     flex-direction: row;
   }
 }
@@ -293,17 +311,14 @@ ul {
   border-bottom-right-radius: 0 !important;
 }
 
-/* End - FAQh */
+/* End - FAQ */
 
 /* Start - Footer */
 
-.footer {
-  margin: 4rem 0;
-}
-
-.footer__container {
+footer {
   display: flex;
   gap: 4rem;
+  margin: 4rem auto !important;
   flex-wrap: wrap;
 }
 
