@@ -39,6 +39,7 @@ ul {
 
 main > .container {
   margin: 4rem auto;
+  scroll-margin-top: 6rem;
 }
 
 /* End - Base */
