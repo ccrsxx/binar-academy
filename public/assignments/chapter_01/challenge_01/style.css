@@ -168,7 +168,7 @@ main > .container {
 /* End - Our Service */
 
 /* Start - Why Us  */
-.why-us {
+#why-us {
   display: grid;
   gap: 1rem;
 }
@@ -194,7 +194,7 @@ main > .container {
 #testimonial {
   display: grid;
   text-align: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .carousel {
@@ -290,6 +290,9 @@ main > .container {
 }
 
 .faq__text {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
   width: 100%;
   max-width: 32rem;
 }
