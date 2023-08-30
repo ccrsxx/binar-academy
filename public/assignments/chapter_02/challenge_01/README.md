@@ -1,3 +1,8 @@
+---
+title: Basic Javascript
+description: Three basic Javascript challenges
+---
+
 # Javascript: Array Challenge
 
 Tugasmu disini adalah memodifikasi file-file berikut:
