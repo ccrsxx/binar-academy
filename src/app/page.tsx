@@ -13,9 +13,9 @@ export default async function Home(): Promise<JSX.Element> {
           Academy.
         </p>
       </section>
-      {chapters.map(({ title, assignments }) => (
-        <section className='grid gap-2' key={title}>
-          <h3 className='text-lg font-bold'>{title}</h3>
+      {chapters.map((assignments, index) => (
+        <section className='grid gap-2' key={index}>
+          <h3 className='text-lg font-bold'>Chapter {index + 1}</h3>
           <section className='layout'>
             {assignments.map((assignment) => (
               <Card {...assignment} key={assignment.slug} />

@@ -1,7 +1,7 @@
 import { readdir, readFile } from 'fs/promises';
 import { join } from 'path';
 import matter from 'gray-matter';
-import type { Details, Chapter } from './types/common';
+import type { Details, Assignment } from './types/common';
 
 const ASSIGNMENT_PATH = join('public', 'assignments');
 
@@ -17,15 +17,11 @@ export async function extractMetaDataFromMarkdown(
   return data as Details;
 }
 
-export async function getChapters(): Promise<Chapter[]> {
+export async function getChapters(): Promise<Assignment[][]> {
   const directories = await readdir(ASSIGNMENT_PATH);
 
   const chapters = await Promise.all(
     directories.map(async (directory) => {
-      const dirData = await extractMetaDataFromMarkdown(
-        join(ASSIGNMENT_PATH, directory, 'README.md')
-      );
-
       const subDirectories = await readdir(join(ASSIGNMENT_PATH, directory), {
         withFileTypes: true
       });
@@ -50,10 +46,7 @@ export async function getChapters(): Promise<Chapter[]> {
         })
       );
 
-      return {
-        ...dirData,
-        assignments
-      };
+      return assignments;
     })
   );
 

@@ -1,6 +1,6 @@
 ---
 title: Basic Javascript
-description: Three basic Javascript challenges
+description: Three basic Javascript challenges.
 ---
 
 # Javascript: Array Challenge
