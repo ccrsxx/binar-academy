@@ -40,13 +40,32 @@ class Car {
   }
 
   render() {
-    return `
-      <p>id: <b>${this.id}</b></p>
-      <p>plate: <b>${this.plate}</b></p>
-      <p>manufacture: <b>${this.manufacture}</b></p>
-      <p>model: <b>${this.model}</b></p>
-      <p>available at: <b>${this.availableAt}</b></p>
-      <img src="${this.image}" alt="${this.manufacture}" width="64px">
+    return html`
+      <div class="search-car__card-inner-container">
+        <img
+          class="search-car__card-img"
+          src="${this.image}"
+          alt="${this.manufacture}"
+        />
+        <div class="search-car__card-info-container">
+          <h2 class="h6">${this.manufacture} ${this.model}</h2>
+          <p class="h5 fw-bold">${formatCurrency(this.rentPerDay)} / Hari</p>
+          <p>${this.description}</p>
+          <div class="search-car__card-info">
+            <img src="assets/icon/users.svg" alt="Users" />
+            <p>${this.capacity}</p>
+          </div>
+          <div class="search-car__card-info">
+            <img src="assets/icon/settings.svg" alt="Settings" />
+            <p>${this.transmission}</p>
+          </div>
+          <div class="search-car__card-info">
+            <img src="assets/icon/calendar.svg" alt="Calendar" />
+            <p>${this.year}</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-success">Pilih Mobil</button>
     `;
   }
 }

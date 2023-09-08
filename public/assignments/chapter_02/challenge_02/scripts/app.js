@@ -15,7 +15,10 @@ class App {
 
   run = () => {
     Car.list.forEach((car) => {
-      const node = document.createElement('div');
+      const node = document.createElement('article');
+
+      node.className = 'search-car__car-card';
+
       node.innerHTML = car.render();
       this.carContainerElement.appendChild(node);
     });
