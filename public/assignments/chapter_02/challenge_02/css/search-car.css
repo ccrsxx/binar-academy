@@ -1,10 +1,13 @@
 /* Start - Search Car */
 
 .search-car__container {
+  max-width: 86rem;
+}
+
+.search-car__form-container {
   box-shadow: 0px 0px 10px 0px #00000026;
   padding: 2rem;
   border-radius: 0.5rem;
-  max-width: 77rem;
   background: white;
   transform: translateY(-2rem);
 }
@@ -13,6 +16,7 @@
   display: flex;
   gap: 1rem;
   align-items: end;
+  flex-wrap: wrap;
 }
 
 div.form-control {
@@ -68,6 +72,50 @@ input[type='date']::-webkit-calendar-picker-indicator {
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+.search-car__card-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.search-car__car-card {
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: white;
+
+  display: grid;
+  gap: 2rem;
+  align-content: space-between;
+}
+
+.search-car__card-inner-container {
+  display: grid;
+  gap: 2rem;
+}
+
+.search-car__card-img {
+  width: 100%;
+  height: 208px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.search-car__card-info-container {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.search-car__card-info {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.search-car__card-info > p {
+  margin: 0;
 }
 
 /* End - Search Car */

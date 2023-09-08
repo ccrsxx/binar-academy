@@ -56,6 +56,11 @@
       integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
       crossorigin="anonymous"
     ></script>
+    <script defer type="text/javascript" src="scripts/utils.js"></script>
+    <script defer type="text/javascript" src="scripts/binar.js"></script>
+    <script defer type="text/javascript" src="scripts/app.js"></script>
+    <script defer type="text/javascript" src="scripts/car.js"></script>
+    <script defer type="text/javascript" src="scripts/main.js"></script>
   </head>
   <body>
     <header class="sticky-top header">
@@ -138,58 +143,64 @@
       </section>
       <section id="search-car">
         <div class="container search-car__container">
-          <div class="search-car__options">
-            <div class="search-car__filter">
-              <label for="driver" class="form-label">Tipe Driver</label>
-              <select id="driver" class="form-select">
-                <option value="" disabled selected hidden>
-                  Pilih Tipe Driver
-                </option>
-                <option value="1">Dengan Sopir</option>
-                <option value="2">Tanpa Sopir (Lepas Kunci)</option>
-              </select>
-            </div>
-            <div class="search-car__filter">
-              <label for="date" class="form-label">Pilih Tanggal</label>
-              <div class="form-control position-relative">
-                <input
-                  id="date"
-                  type="text"
-                  placeholder="Pilih Tanggal"
-                  onfocus="(this.type='date')"
-                />
-                <img src="assets/icon/date.svg" />
-              </div>
-            </div>
-            <div class="search-car__filter">
-              <label for="time" class="form-label">Pilih Waktu Jemput</label>
-              <div class="form-control position-relative">
-                <select id="time" class="form-select">
-                  <option value="" disabled selected hidden>Pilih Waktu</option>
-                  <option value="08:00">08:00 WIB</option>
-                  <option value="09:00">09:00 WIB</option>
-                  <option value="10:00">10:00 WIB</option>
-                  <option value="11:00">11:00 WIB</option>
-                  <option value="12:00">12:00 WIB</option>
+          <div class="search-car__form-container">
+            <div class="search-car__options">
+              <div class="search-car__filter">
+                <label for="driver" class="form-label">Tipe Driver</label>
+                <select id="driver" class="form-select">
+                  <option value="" disabled selected hidden>
+                    Pilih Tipe Driver
+                  </option>
+                  <option value="1">Dengan Sopir</option>
+                  <option value="2">Tanpa Sopir (Lepas Kunci)</option>
                 </select>
-                <img src="assets/icon/clock.svg" alt="Clock" />
               </div>
-            </div>
-            <div class="search-car__filter">
-              <label for="tipe_driver" class="form-label"
-                >Jumlah Penumpang (optional)</label
-              >
-              <div class="form-control position-relative">
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Jumlah Penumpang"
-                />
-                <img src="assets/icon/users.svg" alt="Users" />
+              <div class="search-car__filter">
+                <label for="date" class="form-label">Pilih Tanggal</label>
+                <div class="form-control position-relative">
+                  <input
+                    id="date"
+                    type="text"
+                    placeholder="Pilih Tanggal"
+                    onfocus="(this.type='date')"
+                  />
+                  <img src="assets/icon/date.svg" alt="Date" />
+                </div>
               </div>
+              <div class="search-car__filter">
+                <label for="time" class="form-label">Pilih Waktu Jemput</label>
+                <div class="form-control position-relative">
+                  <select id="time" class="form-select">
+                    <option value="" disabled selected hidden>
+                      Pilih Waktu
+                    </option>
+                    <option value="08:00">08:00 WIB</option>
+                    <option value="09:00">09:00 WIB</option>
+                    <option value="10:00">10:00 WIB</option>
+                    <option value="11:00">11:00 WIB</option>
+                    <option value="12:00">12:00 WIB</option>
+                  </select>
+                  <img src="assets/icon/clock.svg" alt="Clock" />
+                </div>
+              </div>
+              <div class="search-car__filter">
+                <label for="tipe_driver" class="form-label"
+                  >Jumlah Penumpang (optional)</label
+                >
+                <div class="form-control position-relative">
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Jumlah Penumpang"
+                  />
+                  <img src="assets/icon/group.svg" alt="Group" />
+                </div>
+              </div>
+              <button id="load-btn" class="btn btn-success">Cari Mobil</button>
+              <button id="clear-btn" class="btn btn-danger">Clear</button>
             </div>
-            <button id="load-btn" class="btn btn-success">Cari Mobil</button>
           </div>
+          <section id="cars-container" class="search-car__card-container" />
         </div>
       </section>
     </main>
