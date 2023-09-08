@@ -10,3 +10,6 @@ jest.config.js
 
 # commitlint config
 commitlint.config.js
+
+# public assignments
+public/assignments

@@ -11,7 +11,6 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "next/core-web-vitals"
   ],
-  "ignorePatterns": ["public/assignments"],
   "rules": {
     "semi": ["error", "always"],
     "curly": ["warn", "multi"],
