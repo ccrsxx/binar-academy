@@ -1,4 +1,4 @@
 ---
-title: Landing Page
-description: Basic HTML landing page.
+title: Landing Page - Search Car
+description: Filter cars by manipulating the DOM with JavaScript.
 ---
