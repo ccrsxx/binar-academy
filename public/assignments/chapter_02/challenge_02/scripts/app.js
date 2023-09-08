@@ -14,7 +14,7 @@ class App {
   }
 
   run = (event) => {
-    this.clear();
+    this.clear(false);
 
     event.preventDefault();
 
@@ -58,7 +58,9 @@ class App {
     Car.init(cars);
   }
 
-  clear = () => {
+  clear = (reset = true) => {
+    if (reset) this.form.reset();
+
     this.carContainerElement.innerHTML = '';
   };
 }
