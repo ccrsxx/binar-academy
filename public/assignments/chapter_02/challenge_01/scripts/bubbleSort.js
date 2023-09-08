@@ -7,21 +7,17 @@ function bubbleSort(arr, propToSort, sortDirection) {
       const prevCarItem = prevCar[propToSort];
       const nextCarItem = nextCar[propToSort];
 
-      const sorting =
+      const okayCondition =
         sortDirection === 'ascending'
           ? prevCarItem > nextCarItem
           : prevCarItem < nextCarItem;
 
-      if (sorting) {
-        let tempCar = prevCar;
-
+      if (okayCondition) {
         arr[j] = nextCar;
-        arr[j + 1] = tempCar;
+        arr[j + 1] = prevCar;
       }
     }
   }
 
   return arr;
 }
-
-window.bubbleSort = bubbleSort;
