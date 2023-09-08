@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Rent a Car</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam."
+    />
+    <meta name="author" content="Risal Amin" />
+    <meta name="generator" content="Next.js" />
+    <meta property="og:determiner" content="auto" />
+    <meta property="og:title" content="Rent a Car" />
+    <meta
+      property="og:description"
+      content="Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam."
+    />
+    <meta property="og:url" content="https://binar-academy.ccrsxx.me" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="ccrsxx.me" />
+    <meta
+      property="og:image"
+      content="https://ccrsxx.me/api/og?title=Rent%20a%20Car&description=Kami%20menyediakan%20mobil%20kualitas%20terbaik%20dengan%20harga%20terjangkau.%20Selalu%20siap%20melayani%20kebutuhanmu%20untuk%20sewa%20mobil%20selama%2024%20jam."
+    />
+    <meta property="og:image:alt" content="Rent a Car" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ccrsxx" />
+    <meta name="twitter:creator" content="@ccrsxx" />
+    <meta name="twitter:title" content="Rent a Car" />
+    <meta
+      name="twitter:description"
+      content="Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ccrsxx.me/api/og?title=Rent%20a%20Car&description=Kami%20menyediakan%20mobil%20kualitas%20terbaik%20dengan%20harga%20terjangkau.%20Selalu%20siap%20melayani%20kebutuhanmu%20untuk%20sewa%20mobil%20selama%2024%20jam."
+    />
+    <meta name="twitter:image:alt" content="Rent a Car" />
+    <meta name="og:site_name" content="ccrsxx.me" />
+    <link rel="author" href="https://ccrsxx.me" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/search-car.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="sticky-top header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">Rent a Car</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title fw-semibold" id="offcanvasNavbarLabel">
+                Rent a Car
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a href="#our-services" class="nav-link active"
+                    >Our services</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#why-us" class="nav-link active">Why Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#testimonial" class="nav-link active">Testimonial</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#faq" class="nav-link active">FAQ</a>
+                </li>
+                <button class="btn btn-success me-auto">Register</button>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="homepage">
+        <div class="container homepage__container">
+          <div class="homepage__text">
+            <h1 class="fw-bold">
+              Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)
+            </h1>
+            <p class="mt-4">
+              Selamat datang di Rent a Car. Kami menyediakan mobil kualitas
+              terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
+              untuk sewa mobil selama 24 jam.
+            </p>
+          </div>
+          <div class="homepage__car-wrapper">
+            <div class="homepage__car-container">
+              <img
+                class="homepage__car img-fluid"
+                src="assets/img/car.svg"
+                alt="Car"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="search-car">
+        <div class="container search-car__container">
+          <div class="search-car__options">
+            <div class="search-car__filter">
+              <label for="driver" class="form-label">Tipe Driver</label>
+              <select id="driver" class="form-select">
+                <option value="" disabled selected hidden>
+                  Pilih Tipe Driver
+                </option>
+                <option value="1">Dengan Sopir</option>
+                <option value="2">Tanpa Sopir (Lepas Kunci)</option>
+              </select>
+            </div>
+            <div class="search-car__filter">
+              <label for="date" class="form-label">Pilih Tanggal</label>
+              <div class="form-control position-relative">
+                <input
+                  id="date"
+                  type="text"
+                  placeholder="Pilih Tanggal"
+                  onfocus="(this.type='date')"
+                />
+                <img src="assets/icon/date.svg" />
+              </div>
+            </div>
+            <div class="search-car__filter">
+              <label for="time" class="form-label">Pilih Waktu Jemput</label>
+              <div class="form-control position-relative">
+                <select id="time" class="form-select">
+                  <option value="" disabled selected hidden>Pilih Waktu</option>
+                  <option value="08:00">08:00 WIB</option>
+                  <option value="09:00">09:00 WIB</option>
+                  <option value="10:00">10:00 WIB</option>
+                  <option value="11:00">11:00 WIB</option>
+                  <option value="12:00">12:00 WIB</option>
+                </select>
+                <img src="assets/icon/clock.svg" alt="Clock" />
+              </div>
+            </div>
+            <div class="search-car__filter">
+              <label for="tipe_driver" class="form-label"
+                >Jumlah Penumpang (optional)</label
+              >
+              <div class="form-control position-relative">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Jumlah Penumpang"
+                />
+                <img src="assets/icon/users.svg" alt="Users" />
+              </div>
+            </div>
+            <button id="load-btn" class="btn btn-success">Cari Mobil</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="container">
+      <section class="footer__section">
+        <p>Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</p>
+        <p>binarcarrental@gmail.com</p>
+        <p>081-233-334-808</p>
+      </section>
+      <section class="footer__section">
+        <nav class="footer_section-nav">
+          <a class="nav-link" href="#our-servicess">Our services</a>
+          <a class="nav-link" href="#why-us">Why Us</a>
+          <a class="nav-link" href="#testimonial">Testimonial</a>
+          <a class="nav-link" href="#faq">FAQ</a>
+        </nav>
+      </section>
+      <section class="footer__section">
+        <p>Connect with us</p>
+        <ul class="footer__section-item">
+          <li>
+            <img src="assets/icon/facebook.svg" alt="Facebook" />
+          </li>
+          <li>
+            <img src="assets/icon/instagram.svg" alt="Instagram" />
+          </li>
+          <li>
+            <img src="assets/icon/twitter.svg" alt="Twitter" />
+          </li>
+          <li>
+            <img src="assets/icon/email.svg" alt="Email" />
+          </li>
+          <li>
+            <img src="assets/icon/twitch.svg" alt="Twitch" />
+          </li>
+        </ul>
+      </section>
+      <section class="footer__section">
+        <p>Copyright Binar 2022</p>
+        <p>Rent a Car</p>
+      </section>
+    </footer>
+  </body>
+</html>
