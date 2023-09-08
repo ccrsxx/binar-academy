@@ -14,9 +14,9 @@ class App {
   }
 
   run = (event) => {
-    this.clear(false);
-
     event.preventDefault();
+
+    this.clear(false);
 
     const formData = new FormData(this.form);
 
@@ -34,7 +34,7 @@ class App {
       );
 
       const isCapacityEqual = totalPassengers
-        ? capacity === +totalPassengers
+        ? capacity >= +totalPassengers
         : true;
 
       const isAllFilterMatch = isDateAndTimeMatch && isCapacityEqual;

@@ -37,7 +37,7 @@ function isSameBetweenTwoDates(inputDate, targetDate, targetTime) {
   const firstDateString = inputDate.toISOString().slice(0, 10);
   const secondDateString = targetDate.toISOString().slice(0, 10);
 
-  if (firstDateString !== secondDateString) return false;
+  if (firstDateString > secondDateString) return false;
 
   const secondDateTime = targetDate.toISOString().slice(11, 16);
 
