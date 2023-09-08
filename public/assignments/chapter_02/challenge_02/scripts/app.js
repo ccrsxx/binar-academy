@@ -1,7 +1,7 @@
 class App {
   constructor() {
+    this.form = document.getElementById('form');
     this.clearButton = document.getElementById('clear-btn');
-    this.loadButton = document.getElementById('load-btn');
     this.carContainerElement = document.getElementById('cars-container');
   }
 
@@ -9,19 +9,47 @@ class App {
     await this.load();
 
     // Register click listener
+    this.form.onsubmit = this.run;
     this.clearButton.onclick = this.clear;
-    this.loadButton.onclick = this.run;
   }
 
-  run = () => {
-    Car.list.forEach((car) => {
+  run = (event) => {
+    this.clear();
+
+    event.preventDefault();
+
+    const formData = new FormData(this.form);
+
+    const data = Object.fromEntries(formData.entries());
+
+    const { date, driverType: _, pickUpTime, totalPassengers } = data;
+
+    const formattedDate = new Date(date);
+
+    const filteredCars = Car.list.filter(({ availableAt, capacity }) => {
+      const isDateAndTimeMatch = isSameBetweenTwoDates(
+        formattedDate,
+        availableAt,
+        pickUpTime
+      );
+
+      const isCapacityEqual = totalPassengers
+        ? capacity === +totalPassengers
+        : true;
+
+      const isAllFilterMatch = isDateAndTimeMatch && isCapacityEqual;
+
+      return isAllFilterMatch;
+    });
+
+    for (const car of filteredCars) {
       const node = document.createElement('article');
 
       node.className = 'search-car__car-card';
 
       node.innerHTML = car.render();
       this.carContainerElement.appendChild(node);
-    });
+    }
   };
 
   async load() {
@@ -31,11 +59,6 @@ class App {
   }
 
   clear = () => {
-    let child = this.carContainerElement.firstElementChild;
-
-    while (child) {
-      child.remove();
-      child = this.carContainerElement.firstElementChild;
-    }
+    this.carContainerElement.innerHTML = '';
   };
 }

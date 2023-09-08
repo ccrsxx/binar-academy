@@ -24,3 +24,24 @@ const formatter = new Intl.NumberFormat('id-ID', {
 function formatCurrency(value) {
   return formatter.format(value);
 }
+
+/**
+ * Check if two dates are the same
+ *
+ * @param {Date} inputDate
+ * @param {Date} targetDate
+ * @param {string} targetTime
+ * @returns {boolean} is same between two dates
+ */
+function isSameBetweenTwoDates(inputDate, targetDate, targetTime) {
+  const firstDateString = inputDate.toISOString().slice(0, 10);
+  const secondDateString = targetDate.toISOString().slice(0, 10);
+
+  if (firstDateString !== secondDateString) return false;
+
+  const secondDateTime = targetDate.toISOString().slice(11, 16);
+
+  const isWithinTargetTime = targetTime <= secondDateTime;
+
+  return isWithinTargetTime;
+}

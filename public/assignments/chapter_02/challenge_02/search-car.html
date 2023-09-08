@@ -144,10 +144,15 @@
       <section id="search-car">
         <div class="container search-car__container">
           <div class="search-car__form-container">
-            <div class="search-car__options">
+            <form id="form" class="search-car__options">
               <div class="search-car__filter">
-                <label for="driver" class="form-label">Tipe Driver</label>
-                <select id="driver" class="form-select">
+                <label for="driverType" class="form-label">Tipe Driver</label>
+                <select
+                  required
+                  id="driverType"
+                  name="driverType"
+                  class="form-select"
+                >
                   <option value="" disabled selected hidden>
                     Pilih Tipe Driver
                   </option>
@@ -159,8 +164,10 @@
                 <label for="date" class="form-label">Pilih Tanggal</label>
                 <div class="form-control position-relative">
                   <input
+                    required
                     id="date"
                     type="text"
+                    name="date"
                     placeholder="Pilih Tanggal"
                     onfocus="(this.type='date')"
                   />
@@ -168,9 +175,16 @@
                 </div>
               </div>
               <div class="search-car__filter">
-                <label for="time" class="form-label">Pilih Waktu Jemput</label>
+                <label for="pickUpTime" class="form-label"
+                  >Pilih Waktu Jemput</label
+                >
                 <div class="form-control position-relative">
-                  <select id="time" class="form-select">
+                  <select
+                    required
+                    id="pickUpTime"
+                    name="pickUpTime"
+                    class="form-select"
+                  >
                     <option value="" disabled selected hidden>
                       Pilih Waktu
                     </option>
@@ -184,21 +198,25 @@
                 </div>
               </div>
               <div class="search-car__filter">
-                <label for="tipe_driver" class="form-label"
+                <label for="totalPassengers" class="form-label"
                   >Jumlah Penumpang (optional)</label
                 >
                 <div class="form-control position-relative">
                   <input
+                    id="totalPassengers"
                     type="number"
                     class="form-control"
+                    name="totalPassengers"
                     placeholder="Jumlah Penumpang"
                   />
                   <img src="assets/icon/group.svg" alt="Group" />
                 </div>
               </div>
-              <button id="load-btn" class="btn btn-success">Cari Mobil</button>
-              <button id="clear-btn" class="btn btn-danger">Clear</button>
-            </div>
+              <button type="submit" class="btn btn-success">Cari Mobil</button>
+              <button type="button" id="clear-btn" class="btn btn-danger">
+                Clear
+              </button>
+            </form>
           </div>
           <section id="cars-container" class="search-car__card-container" />
         </div>
