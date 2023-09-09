@@ -7,7 +7,7 @@ export function Card({
   description
 }: Assignment): JSX.Element {
   return (
-    <article className='grid' key={slug}>
+    <article className='grid content-start' key={slug}>
       <a className='clickable p-2' href={url} target='_blank'>
         <section>
           <h4 className='text-lg text-gray-100'>{title}</h4>
