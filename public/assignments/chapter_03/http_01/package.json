@@ -1,0 +1,27 @@
+{
+  "name": "challenge_01",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ."
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccrsxx/binar-academy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ccrsxx/binar-academy/issues"
+  },
+  "homepage": "https://github.com/ccrsxx/binar-academy#readme",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
