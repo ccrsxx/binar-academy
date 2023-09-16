@@ -1,5 +1,5 @@
 # next config
-next.config.mjs
+next.config.js
 
 # tailwind config
 tailwind.config.js
