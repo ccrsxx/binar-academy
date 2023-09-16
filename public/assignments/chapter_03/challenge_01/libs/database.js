@@ -1,16 +1,28 @@
 import { writeFile } from 'fs/promises';
 import data from '../assets/data.json' assert { type: 'json' };
 import defaultData from '../assets/default-data.json' assert { type: 'json' };
+import * as Types from '../models/car.js';
 
+/**
+ * Database class
+ *
+ * @returns {Database}
+ */
 export class Database {
+  /** @type {Types.Car[]} */
   #data = data;
 
+  /**
+   * Get database data
+   *
+   * @returns {Types.Car[]}
+   */
   getData() {
     return this.#data;
   }
 
   /**
-   * Save data to file
+   * Save database data to local file
    *
    * @returns {Promise<void>}
    */
@@ -20,56 +32,90 @@ export class Database {
   }
 
   /**
-   * Reset database
+   * Reset database to default data
    *
    * @returns {Promise<void>}
    */
   async resetDatabase() {
     this.#data = defaultData;
-    this.saveToDatabase();
+    await this.saveToDatabase();
   }
 
   /**
    * Get car by id
    *
-   * @param {string} id
-   * @returns {Promise<Car|null>}
+   * @param {string} id Car id
+   * @returns {Types.Car|null}
    */
   getCarById(id) {
-    return this.#data.find((car) => car.id === id);
+    return this.#data.find((car) => car.id === id) ?? null;
   }
 
   /**
    * Create car
    *
-   * @param {Car} car
-   * @returns {void}
+   * @param {Types.Car} data Car data
+   * @returns {Promise<Types.Car|null>}
    */
-  async createCar(car) {
-    this.#data.unshift(car);
+  async createCar(data) {
+    if (this.getCarById(data.id)) return null;
+
+    this.#data.unshift(data);
+
     await this.saveToDatabase();
+
+    return data;
   }
 
   /**
    * Update car
    *
-   * @param {string} carId
-   * @param {Car} data
-   * @returns {Promise<void|null>}
+   * @param {string} id Car id
+   * @param {Types.Car} data Car data
+   * @returns {Promise<Types.Car|null>}
    */
-  async updateCar(carId, data) {
-    const targetCarIndex = this.#data.findIndex((car) => car.id === carId);
+  async updateCar(id, data) {
+    const car = this.getCarById(id);
 
-    if (targetCarIndex === -1) {
-      return null;
-    }
+    if (!car) return null;
 
-    this.#data[targetCarIndex] = {
-      ...this.#data[targetCarIndex],
+    /** @type {Types.Car} */
+    const updatedCar = {
+      ...car,
       ...data
     };
 
+    /** @type {Types.Car[]} */
+    const updatedData = this.#data.map((car) =>
+      car.id === id ? updatedCar : car
+    );
+
+    this.#data = updatedData;
+
     await this.saveToDatabase();
+
+    return updatedCar;
+  }
+
+  /**
+   * Delete car
+   *
+   * @param {string} id Car id
+   * @returns {Promise<Types.Car|null>}
+   */
+  async deleteCar(id) {
+    const car = this.getCarById(id);
+
+    if (!car) return null;
+
+    /** @type {Types.Car[]} */
+    const updatedData = this.#data.filter((car) => car.id !== id);
+
+    this.#data = updatedData;
+
+    await this.saveToDatabase();
+
+    return car;
   }
 }
 

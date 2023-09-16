@@ -1,14 +1,12 @@
 import { database } from '../libs/database.js';
 
 /**
- * Handle reset route
- *
- * @param {Request} req
- * @param {Response} res
- * @returns {Promise<void>}
+ * @param {import('express').Express} app
+ * @returns {void}
  */
-export async function handleResetRoute(_req, res) {
-  await database.resetDatabase();
-
-  res.status(200).json({ message: 'Database reset successfully' });
-}
+export default (app) => {
+  app.get('/reset', async (req, res) => {
+    await database.resetDatabase();
+    res.status(200).json({ message: 'Database reset successfully' });
+  });
+};

@@ -1,69 +1,74 @@
 import { database } from '../libs/database.js';
 
 /**
- * Handle cars route
- *
- * @param {Request} req
- * @param {Response} res
+ * @param {import('express').Express} app
  * @returns {void}
  */
-export function handleCarsRoute(req, res) {
-  res.status(200).json(database.getData());
-}
+export default (app) => {
+  app.get('/', (req, res) =>
+    res.status(200).json({
+      message: 'Ping successfully',
+      documentation:
+        'https://www.postman.com/ccrsxx/workspace/rental-car/collection/27649751-fbfb558d-d5e1-4773-9910-2d1d52f2f2c8'
+    })
+  );
 
-/**
- * Handle cars slug route
- *
- * @param {Request} req
- * @param {Response} res
- * @returns {void}
- */
-export function handleCarsSlug(req, res) {
-  const { id } = req.params;
+  app.get('/cars', (req, res) => {
+    const data = database.getData();
 
-  const car = database.getCarById(id);
+    res.status(200).json({ data: data });
+  });
 
-  if (!car) {
-    res.status(404).json({ message: `Car with id ${id} not found` });
-    return;
-  }
+  app.get('/cars/:id', (req, res) => {
+    const { id } = req.params;
 
-  res.status(200).json(car);
-}
+    const car = database.getCarById(id);
 
-/**
- * Handle cars post route
- *
- * @param {Request} req
- * @param {Response} res
- * @returns {Promise<void>}
- */
-export async function handleCarsPost(req, res) {
-  const { body } = req;
+    if (!car) {
+      res.status(404).json({ message: `Car with id ${id} not found` });
+      return;
+    }
 
-  await database.createCar(body);
+    res.status(200).json(car);
+  });
 
-  res.status(201).json(body);
-}
+  app.post('/cars', async (req, res) => {
+    const { body } = req;
 
-/**
- * Handle cars put route
- * @param {Request} req
- * @param {Response} res
- * @returns {Promise<void>}
- */
-export async function handleCarsPut(req, res) {
-  const { body } = req;
-  const { id } = req.params;
+    const data = await database.createCar(body);
 
-  const car = database.getCarById(id);
+    if (!data) {
+      res.status(409).json({ message: 'Car already exists' });
+      return;
+    }
 
-  if (!car) {
-    res.status(404).json({ message: `Car with id ${id} not found` });
-    return;
-  }
+    res.status(201).json({ message: 'Car created successfully', data: data });
+  });
 
-  await database.updateCar(id, body);
+  app.put('/cars/:id', async (req, res) => {
+    const { body } = req;
+    const { id } = req.params;
 
-  res.status(200).json(body);
-}
+    const data = await database.updateCar(id, body);
+
+    if (!data) {
+      res.status(404).json({ message: `Car with id ${id} not found` });
+      return;
+    }
+
+    res.status(200).json({ message: 'Car updated successfully', data: data });
+  });
+
+  app.delete('/cars/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const data = await database.deleteCar(id);
+
+    if (!data) {
+      res.status(404).json({ message: `Car with id ${id} not found` });
+      return;
+    }
+
+    res.status(200).json({ message: 'Car deleted successfully', data: data });
+  });
+};
