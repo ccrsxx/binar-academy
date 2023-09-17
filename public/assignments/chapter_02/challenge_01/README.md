@@ -1,5 +1,5 @@
 ---
-title: Basic Javascript
+title: Challenge 1 - Basic Javascript
 description: Three basic Javascript challenges.
 ---
 
