@@ -1,7 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 
 /**
- * function onRequest
+ * Function onRequest
  *
  * @param {IncomingMessage} req
  * @param {ServerResponse} res

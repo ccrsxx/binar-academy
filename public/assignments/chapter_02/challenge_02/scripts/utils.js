@@ -19,7 +19,7 @@ const formatter = new Intl.NumberFormat('id-ID', {
  * Format number currency to IDR
  *
  * @param {number} value
- * @returns {string} formatted currency
+ * @returns {string} Formatted currency
  */
 function formatCurrency(value) {
   return formatter.format(value);
@@ -31,7 +31,7 @@ function formatCurrency(value) {
  * @param {Date} inputDate
  * @param {Date} targetDate
  * @param {string} targetTime
- * @returns {boolean} is same between two dates
+ * @returns {boolean} Is same between two dates
  */
 function isSameBetweenTwoDates(inputDate, targetDate, targetTime) {
   const firstDateString = inputDate.toISOString().slice(0, 10);
