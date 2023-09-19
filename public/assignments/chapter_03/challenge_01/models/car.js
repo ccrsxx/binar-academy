@@ -1,8 +1,21 @@
 /**
  * @typedef Car
- * @prop {string} id
- * @prop {string} model
- * @prop {string} description
+ * @property {string} id
+ * @property {string} image
+ * @property {number} capacity
+ * @property {number} rentPerDay
+ * @property {string} description
+ * @property {string} availableAt
  */
 
-export const Types = {};
+/** @type {Car} */
+export const defaultCarType = {
+  id: '',
+  image: '',
+  capacity: 0,
+  rentPerDay: 0,
+  description: '',
+  availableAt: ''
+};
+
+export const Models = {};

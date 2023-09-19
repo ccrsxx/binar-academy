@@ -1,158 +1,42 @@
 [
   {
     "id": "6e2bc663-5197-441a-957b-bc75e4a2da7c",
-    "plate": "DBH-3491",
-    "manufacture": "Ford",
-    "model": "F150",
     "image": "./images/car01.min.jpg",
-    "rentPerDay": 200000,
     "capacity": 2,
+    "rentPerDay": 200000,
     "description": " Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.",
-    "availableAt": "2022-03-23T15:49:05.563Z",
-    "transmission": "Automatic",
-    "available": true,
-    "type": "Sedan",
-    "year": 2022,
-    "options": [
-      "Cruise Control",
-      "Tinted Glass",
-      "Tinted Glass",
-      "Tinted Glass",
-      "AM/FM Stereo"
-    ],
-    "specs": [
-      "Brake assist",
-      "Leather-wrapped shift knob",
-      "Glove box lamp",
-      "Air conditioning w/in-cabin microfilter",
-      "Body color folding remote-controlled pwr mirrors",
-      "Dual-stage front airbags w/occupant classification system"
-    ]
+    "availableAt": "2022-03-23T15:49:05.563Z"
   },
   {
     "id": "9ff03bbc-b18c-4ba7-8f3a-4c4b5c2f6c77",
-    "plate": "WXB-3984",
-    "manufacture": "BMW",
-    "model": "X5",
     "image": "./images/car02.min.jpg",
-    "rentPerDay": 800000,
     "capacity": 6,
+    "rentPerDay": 800000,
     "description": " Rear passenger map pockets. Electrochromic rearview mirror. Dual chrome exhaust tips. Locking glove box.",
-    "availableAt": "2022-03-23T15:49:05.563Z",
-    "transmission": "Automatic",
-    "available": false,
-    "type": "Convertible",
-    "year": 2019,
-    "options": [
-      "Keyless Entry",
-      "Power Windows",
-      "MP3 (Single Disc)",
-      "CD (Multi Disc)",
-      "Navigation"
-    ],
-    "specs": [
-      "Rear passenger map pockets",
-      "Electrochromic rearview mirror",
-      "Dual chrome exhaust tips",
-      "Locking glove box",
-      "Pwr front vented disc/rear drum brakes"
-    ]
+    "availableAt": "2022-03-23T15:49:05.563Z"
   },
   {
     "id": "bf6b5c43-1377-4ae0-8908-310c64266f81",
-    "plate": "OSL-4224",
-    "manufacture": "Lincoln",
-    "model": "MKZ",
     "image": "./images/car03.min.jpg",
-    "rentPerDay": 900000,
     "capacity": 6,
+    "rentPerDay": 900000,
     "description": " Driver & front passenger map pockets. Direct-type tire pressure monitor system. Cargo area lamp. Glove box lamp.",
-    "availableAt": "2022-03-23T15:49:05.563Z",
-    "transmission": "Automanual",
-    "available": true,
-    "type": "Sedan",
-    "year": 2021,
-    "options": [
-      "Bucket Seats",
-      "Airbag: Passenger",
-      "Airbag: Driver",
-      "Power Seats",
-      "Airbag: Side",
-      "Antilock Brakes",
-      "CD (Multi Disc)"
-    ],
-    "specs": [
-      "Driver & front passenger map pockets",
-      "Direct-type tire pressure monitor system",
-      "Cargo area lamp",
-      "Glove box lamp",
-      "Silver finish interior door handles",
-      "Driver & front passenger advanced multistage airbags w/occupant sensors",
-      "Silver accent IP trim finisher -inc: silver shifter finisher",
-      "Fasten seat belt warning light/chime"
-    ]
+    "availableAt": "2022-03-23T15:49:05.563Z"
   },
   {
     "id": "5b67f1d7-92d4-41c7-8577-4435740aadf1",
-    "plate": "VPT-9753",
-    "manufacture": "BMW",
-    "model": "M5",
     "image": "./images/car04.min.jpg",
-    "rentPerDay": 900000,
     "capacity": 6,
+    "rentPerDay": 900000,
     "description": " 6.1L SRT V8 \"Hemi\" engine.",
-    "availableAt": "2022-03-23T15:49:05.563Z",
-    "transmission": "Manual",
-    "available": true,
-    "type": "Hatchback",
-    "year": 2018,
-    "options": [
-      "Alloy Wheels",
-      "Power Locks",
-      "A/C: Rear",
-      "MP3 (Single Disc)",
-      "Airbag: Driver",
-      "A/C: Front",
-      "Tinted Glass",
-      "Alloy Wheels",
-      "Alarm"
-    ],
-    "specs": [
-      "6.1L SRT V8 \"Hemi\" engine",
-      "Multi-info display -inc: driving range, average MPG, current MPG, average speed, outside temp, elapsed time, maintenance & diagnostic messages",
-      "Front & rear passenger folding assist grips",
-      "Electronic throttle control system w/intelligence (ETCS-i)",
-      "Pwr tilt/slide moonroof -inc: 1-touch open/close",
-      "Acoustic glass windshield"
-    ]
+    "availableAt": "2022-03-23T15:49:05.563Z"
   },
   {
     "id": "23574b8f-3e89-4685-a348-67c1f7e5b3c4",
-    "plate": "BHD-3923",
-    "manufacture": "Lincoln",
-    "model": "Navigator",
     "image": "./images/car05.min.jpg",
     "rentPerDay": 200000,
     "capacity": 2,
     "description": " Body color sill extension. Torsion beam rear suspension w/stabilizer bar. Front & rear passenger folding assist grips.",
-    "availableAt": "2022-03-23T15:49:05.563Z",
-    "transmission": "Automatic",
-    "available": false,
-    "type": "Minivan",
-    "year": 2020,
-    "options": [
-      "CD (Multi Disc)",
-      "Cruise Control",
-      "Power Locks",
-      "Alloy Wheels",
-      "Tow Package"
-    ],
-    "specs": [
-      "Body color sill extension",
-      "Torsion beam rear suspension w/stabilizer bar",
-      "Front & rear passenger folding assist grips",
-      "Electronic control braking (ECB)",
-      "Black windshield molding"
-    ]
+    "availableAt": "2022-03-23T15:49:05.563Z"
   }
 ]

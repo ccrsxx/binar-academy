@@ -1,7 +1,8 @@
 import { writeFile } from 'fs/promises';
+import { randomUUID } from 'crypto';
 import data from '../assets/data.json' assert { type: 'json' };
 import defaultData from '../assets/default-data.json' assert { type: 'json' };
-import * as Types from '../models/car.js';
+import * as Models from '../models/car.js';
 
 /**
  * Database class
@@ -9,13 +10,13 @@ import * as Types from '../models/car.js';
  * @returns {Database}
  */
 export class Database {
-  /** @type {Types.Car[]} */
+  /** @type {Models.Car[]} */
   #data = data;
 
   /**
    * Get database data
    *
-   * @returns {Types.Car[]}
+   * @returns {Models.Car[]}
    */
   getData() {
     return this.#data;
@@ -45,7 +46,7 @@ export class Database {
    * Get car by id
    *
    * @param {string} id Car id
-   * @returns {Types.Car|null}
+   * @returns {Models.Car | null}
    */
   getCarById(id) {
     return this.#data.find((car) => car.id === id) ?? null;
@@ -54,38 +55,40 @@ export class Database {
   /**
    * Create car
    *
-   * @param {Types.Car} data Car data
-   * @returns {Promise<Types.Car|null>}
+   * @param {Omit<Models.Car, 'id'>} data Car data
+   * @returns {Promise<Models.Car>}
    */
   async createCar(data) {
-    if (this.getCarById(data.id)) return null;
+    /** @type {Models.Car} */
+    const newCar = {
+      id: randomUUID(),
+      ...data
+    };
 
-    this.#data.unshift(data);
+    this.#data = [newCar, ...this.#data];
 
     await this.saveToDatabase();
 
-    return data;
+    return newCar;
   }
 
   /**
    * Update car
    *
    * @param {string} id Car id
-   * @param {Types.Car} data Car data
-   * @returns {Promise<Types.Car|null>}
+   * @param {Models.Car} data Car data
+   * @returns {Promise<Models.Car>}
    */
   async updateCar(id, data) {
     const car = this.getCarById(id);
 
-    if (!car) return null;
-
-    /** @type {Types.Car} */
+    /** @type {Models.Car} */
     const updatedCar = {
       ...car,
       ...data
     };
 
-    /** @type {Types.Car[]} */
+    /** @type {Models.Car[]} */
     const updatedData = this.#data.map((car) =>
       car.id === id ? updatedCar : car
     );
@@ -101,14 +104,12 @@ export class Database {
    * Delete car
    *
    * @param {string} id Car id
-   * @returns {Promise<Types.Car|null>}
+   * @returns {Promise<Models.Car>}
    */
   async deleteCar(id) {
-    const car = this.getCarById(id);
+    const car = /** @type {Models.Car} */ (this.getCarById(id));
 
-    if (!car) return null;
-
-    /** @type {Types.Car[]} */
+    /** @type {Models.Car[]} */
     const updatedData = this.#data.filter((car) => car.id !== id);
 
     this.#data = updatedData;
