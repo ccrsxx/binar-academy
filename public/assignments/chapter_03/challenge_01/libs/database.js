@@ -65,7 +65,7 @@ export class Database {
       ...data
     };
 
-    this.#data = [newCar, ...this.#data];
+    this.#data = [...this.#data, newCar];
 
     await this.saveToDatabase();
 
