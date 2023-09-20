@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import type { Assignment, Details } from './types/common';
 
 const ASSIGNMENT_PATH = join('public', 'assignments');
-const REPO_URL = 'https://github.com/ccrsxx/binar-academy';
 
 export async function extractMetaData(
   directory: string,
@@ -18,7 +17,7 @@ export async function extractMetaData(
   );
 
   const url = isNodeAssignment
-    ? join(REPO_URL, 'tree/main', assignmentRoot)
+    ? `https://github.com/ccrsxx/binar-academy/tree/main/public/assignments/${directory}/${slug}`
     : join('assignments', directory, slug, 'index.html');
 
   const metadataFile = await readFile(
