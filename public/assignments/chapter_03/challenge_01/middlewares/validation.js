@@ -96,14 +96,14 @@ export function isAdmin(req, res, next) {
   const { authorization } = req.headers;
 
   if (!authorization) {
-    res.status(401).json({ message: 'Missing authorization header' });
+    res.status(400).json({ message: 'Missing authorization header' });
     return;
   }
 
   const [type, token] = authorization.split(' ');
 
   if (type.toLocaleLowerCase() !== 'bearer' || token !== 'admin') {
-    res.status(401).json({ message: 'Invalid authorization header' });
+    res.status(401).json({ message: 'Invalid authorization token' });
     return;
   }
 
