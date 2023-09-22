@@ -6,7 +6,7 @@ import { isAdmin } from '../middlewares/validation.js';
  * @returns {void}
  */
 export default (app) => {
-  app.get('/reset', isAdmin, async (req, res) => {
+  app.post('/reset', isAdmin, async (req, res) => {
     await database.resetDatabase();
     res.status(200).json({ message: 'Database reset successfully' });
   });
