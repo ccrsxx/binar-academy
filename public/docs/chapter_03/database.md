@@ -1,5 +1,7 @@
 # Database
 
+## Definition
+
 - DBMS is a software that allows you to create and manage databases. It stands for Database Management System.
 - SQL and NoSQL are two types of DBMS.
 - SQL is a relational database management system. It is based on the relational model.
@@ -85,3 +87,82 @@
   - `SELECT column_name FROM table_name;`
 - Inserting new data into a table:
   - `INSERT INTO table_name (column_name) VALUES (value);`
+
+## Querying Example
+
+- DML
+
+  - INSERT
+    Simple insert
+
+    ```sql
+    INSERT INTO table_name (column_name) VALUES (value);
+    ```
+
+    You can also insert multiple values at once
+
+    ```sql
+    INSERT INTO table_name (column_name) VALUES (value1), (value2), (value3);
+    ```
+
+  - SELECT
+    Select all columns
+
+    ```sql
+    SELECT * FROM table_name;
+    ```
+
+    Select specific columns
+
+    ```sql
+    SELECT column_name FROM table_name;
+    ```
+
+    Select specific columns and rename them
+
+    ```sql
+    SELECT column_name AS new_name FROM table_name;
+    ```
+
+    Using where clause
+
+    ```sql
+    SELECT column_name FROM table_name WHERE condition;
+    ```
+
+    Using where clause with multiple conditions
+
+    ```sql
+    SELECT column_name FROM table_name WHERE condition1 AND condition2;
+    ```
+
+    Using order by clause
+
+    ```sql
+    SELECT column_name FROM table_name ORDER BY column_name;
+    ```
+
+    Using group by clause
+
+    ```sql
+    SELECT count(id), column_name FROM table_name GROUP BY column_name;
+    ```
+
+  - UPDATE
+
+    ```sql
+    UPDATE table_name SET column_name = value WHERE condition;
+    ```
+
+  - DELETE
+
+    ```sql
+    DELETE FROM table_name WHERE condition;
+    ```
+
+## ORM
+
+- ORM stands for Object Relational Mapping.
+- ORM is a technique that allows you to query and manipulate data from a database using an object-oriented paradigm.
+- ORM is a programming technique that maps the object to the data stored in the database.
+- ORM has a method to map objects to the data stored in the database.
