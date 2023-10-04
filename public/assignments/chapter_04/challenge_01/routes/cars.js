@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { database } from '../libs/database.js';
 import { carExists, carValid } from '../middlewares/validation.js';
+import { Car } from '../db/models/index.js';
 
 /**
  * @param {import('express').Express} app
@@ -11,16 +11,16 @@ export default (app) => {
 
   app.use('/cars', router);
 
-  router.get('/', (req, res) => {
-    const data = database.getData();
+  router.get('/', async (req, res) => {
+    const data = await Car.findAll();
 
     res.status(200).json({ data: data });
   });
 
-  router.get('/:id', carExists, (req, res) => {
+  router.get('/:id', carExists, async (req, res) => {
     const { id } = req.params;
 
-    const data = database.getCarById(id);
+    const data = await Car.findByPk(id);
 
     res.status(200).json({ data: data });
   });
@@ -28,7 +28,7 @@ export default (app) => {
   router.post('/', carValid, async (req, res) => {
     const { body } = req;
 
-    const data = await database.createCar(body);
+    const data = await Car.create(body);
 
     res.status(201).json({ message: 'Car created successfully', data: data });
   });
@@ -37,7 +37,10 @@ export default (app) => {
     const { body } = req;
     const { id } = req.params;
 
-    const data = await database.updateCar(id, body);
+    const [, data] = await Car.update(body, {
+      where: { id },
+      returning: true
+    });
 
     res.status(200).json({ message: 'Car updated successfully', data: data });
   });
@@ -45,7 +48,9 @@ export default (app) => {
   router.delete('/:id', carExists, async (req, res) => {
     const { id } = req.params;
 
-    const data = await database.deleteCar(id);
+    const data = await Car.findByPk(id);
+
+    await Car.destroy({ where: { id } });
 
     res.status(200).json({ message: 'Car deleted successfully', data: data });
   });

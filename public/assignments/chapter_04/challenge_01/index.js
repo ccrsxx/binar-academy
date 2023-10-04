@@ -1,4 +1,3 @@
-import { Sequelize } from 'sequelize';
 import express, { json } from 'express';
 
 import root from './routes/index.js';
@@ -23,20 +22,3 @@ function main() {
 }
 
 main();
-
-/** @returns {Promise<void>} */
-async function testSequelize() {
-  const sequelize = new Sequelize('rental_car', 'postgres', 'Emilia-tan', {
-    host: 'localhost',
-    dialect: 'postgres'
-  });
-
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-}
-
-void testSequelize();

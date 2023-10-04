@@ -1,5 +1,5 @@
-import { database } from '../libs/database.js';
 import { isAdmin } from '../middlewares/validation.js';
+import { Car } from '../db/models/index.js';
 
 /**
  * @param {import('express').Express} app
@@ -7,7 +7,7 @@ import { isAdmin } from '../middlewares/validation.js';
  */
 export default (app) => {
   app.post('/reset', isAdmin, async (req, res) => {
-    await database.resetDatabase();
+    await Car.destroy({ truncate: true });
     res.status(200).json({ message: 'Database reset successfully' });
   });
 };
