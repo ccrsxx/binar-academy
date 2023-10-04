@@ -166,3 +166,7 @@
 - ORM is a technique that allows you to query and manipulate data from a database using an object-oriented paradigm.
 - ORM is a programming technique that maps the object to the data stored in the database.
 - ORM has a method to map objects to the data stored in the database.
+- ORM Features:
+  - Migration. It allows you to create and modify the database schema using code.
+  - Models. It allows you to model the database schema using code.
+  - Seeder. It allows you to populate the database with test data.
