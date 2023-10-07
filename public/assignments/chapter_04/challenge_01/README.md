@@ -1,6 +1,6 @@
 ---
-title: Challenge 1 - Express app
-description: Write a simple CRUD application for rental cars.
+title: Challenge 1 - Express app with Sequelize and Postgres
+description: Write a simple CRUD application for rental cars
 ---
 
 # Simple CRUD application for rental cars
@@ -8,6 +8,12 @@ description: Write a simple CRUD application for rental cars.
 All the documentation for the API can be found on [Postman](https://www.postman.com/ccrsxx/workspace/rental-car).
 
 The API is deployed on [https://dev.risalamin.com](https://dev.risalamin.com), you can hit the endpoints directly from there. It might not be available on the future, so you can also run it locally.
+
+Here's the ERD for the database:
+
+<p align='center'>
+  <img src='./assets/erd.png' />
+</p>
 
 ## Development
 
@@ -31,7 +37,27 @@ Here are the steps to run the project locally.
    npm i
    ```
 
-1. Run the project
+1. Check you config in [config/config.json](./config/config.json). Make sure the username and password match your local database.
+
+1. Create DB if not exists
+
+   ```bash
+   npm run db:create
+   ```
+
+1. Run migrations
+
+   ```bash
+   npm run db:migrate
+   ```
+
+1. Run seeders
+
+   ```bash
+   npm run db:seed
+   ```
+
+1. Run the app
 
    ```bash
    npm run dev
