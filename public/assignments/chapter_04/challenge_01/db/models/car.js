@@ -10,13 +10,15 @@ import { Model } from 'sequelize';
  * @property {number} rentPerDay
  * @property {string} description
  * @property {Date} availableAt
+ * @property {Date} createdAt
+ * @property {Date} updatedAt
  */
 
 export const carTypes = /** @type {const} */ (['small', 'medium', 'large']);
 
 /** @typedef {(typeof carTypes)[number]} CarTypes */
 
-/** @type {CarAttributes} */
+/** @type {Omit<CarAttributes, 'createdAt' | 'updatedAt'>} */
 export const defaultCarType = {
   id: '',
   type: 'small',
@@ -62,8 +64,7 @@ export default (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Car',
-      timestamps: false
+      modelName: 'Car'
     }
   );
 
