@@ -1,4 +1,3 @@
-const { faker } = require('@faker-js/faker');
 const utils = import('../../libs/utils.js');
 
 /** @type {import('sequelize-cli').Migration} */

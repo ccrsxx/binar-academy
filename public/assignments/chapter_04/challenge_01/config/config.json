@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "Emilia-tan",
-    "database": "rental_car_development",
+    "database": "ccrsxx_rental_car_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "Emilia-tan",
-    "database": "rental_car_test",
+    "database": "ccrsxx_rental_car_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "Emilia-tan",
-    "database": "rental_car_production",
+    "database": "ccrsxx_rental_car_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

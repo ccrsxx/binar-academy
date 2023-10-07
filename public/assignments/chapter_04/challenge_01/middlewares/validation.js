@@ -3,20 +3,22 @@ import * as Models from '../db/models/car.js';
 import { isValidDate, isValidCarType } from '../libs/utils.js';
 
 /**
- * Function type for middleware
+ * Function type for middleware.
  *
+ * @template {Record<string, any>} [T=Record<string, any>] Default is
+ *   `Record<string, any>`
  * @callback Middleware
  * @param {import('express').Request} req
- * @param {import('express').Response} res
+ * @param {import('express').Response<any, T>} res
  * @param {import('express').NextFunction} next
  */
 
 /** @typedef {import('express').NextFunction | void} ReturnValueMiddleware */
 
 /**
- * Check if car exists
+ * Check if car exists.
  *
- * @type {Middleware}
+ * @type {Middleware<{ car: Models.CarAttributes }>}
  * @returns {Promise<ReturnValueMiddleware>}
  */
 export async function carExists(req, res, next) {
@@ -26,8 +28,14 @@ export async function carExists(req, res, next) {
 
   try {
     car = await Car.findByPk(id);
-  } catch {
-    res.status(400).json({ message: 'Invalid car id' });
+  } catch (err) {
+    if (err instanceof Error) {
+      res.status(500).json({ message: `Error: ${err.message}` });
+      return;
+    }
+
+    res.status(500).json({ message: 'Internal server error' });
+
     return;
   }
 
@@ -35,6 +43,8 @@ export async function carExists(req, res, next) {
     res.status(404).json({ message: `Car with id ${id} not found` });
     return;
   }
+
+  res.locals.car = car.dataValues;
 
   next();
 }

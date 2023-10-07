@@ -14,7 +14,9 @@ export function generateRandomData() {
     capacity: faker.number.int({ max: 100 }),
     rentPerDay: faker.number.float({ max: 10_000_000 }),
     description: faker.commerce.productDescription(),
-    availableAt: faker.date.future()
+    availableAt: faker.date.future(),
+    createdAt: faker.date.past(),
+    updatedAt: faker.date.recent()
   }));
 }
 
