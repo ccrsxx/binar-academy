@@ -28,7 +28,7 @@ Here are the steps to run the project locally.
 1. Change directory to the project
 
    ```bash
-   cd binar-academy/public/assignments/chapter_03/challenge_01
+   cd binar-academy/public/assignments/chapter_04/challenge_01
    ```
 
 1. Install dependencies
