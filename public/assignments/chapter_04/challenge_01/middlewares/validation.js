@@ -6,7 +6,7 @@ import { isValidDate, isValidCarType } from '../libs/utils.js';
  * Function type for middleware.
  *
  * @template {Record<string, any>} [T=Record<string, any>] Default is
- *   `Record<string, any>`
+ *   `Record<string, any>`. Default is `Record<string, any>`
  * @callback Middleware
  * @param {import('express').Request} req
  * @param {import('express').Response<any, T>} res
