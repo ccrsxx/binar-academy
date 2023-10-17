@@ -1,6 +1,6 @@
 ---
-title: Service Repository Design Pattern API
-description: Using Service Repository Design Pattern for rental car API
+title: Challenge 1 - Express app with Authentication
+description: Write an Express app with authentication
 ---
 
 # Simple CRUD application for rental cars
