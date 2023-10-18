@@ -48,7 +48,11 @@ export async function isPasswordMatch(password, hashedPassword) {
  */
 export async function generateToken(id) {
   try {
-    const token = jwt.sign(id, JWT_SECRET);
+    const token = jwt.sign({ id }, JWT_SECRET, {
+      expiresIn: 10
+    });
+
+    console.log(token);
     return token;
   } catch (err) {
     throw generateApplicationError(err, 'Error while generating token', 500);
@@ -58,21 +62,13 @@ export async function generateToken(id) {
 /**
  * Verify token with JWT
  *
- * @param {string} authorization
+ * @param {string} token
  * @returns {Promise<Model<Models.UserAttributes>>}
  */
-export async function verifyToken(authorization) {
-  const [type, token] = authorization.split(' ');
-
+export async function verifyToken(token) {
   try {
-    if (type.toLocaleLowerCase() !== 'bearer') {
-      throw new ApplicationError('Invalid authorization token', 401);
-    }
-
     const decodedUserId = /** @type {string} */ (jwt.verify(token, JWT_SECRET));
-
     const user = await userService.getUser(decodedUserId);
-
     return user;
   } catch (err) {
     throw generateApplicationError(err, 'Error while verifying token', 500);

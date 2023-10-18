@@ -17,8 +17,15 @@ export async function isAuthorized(req, res, next) {
     return;
   }
 
+  const [type, token] = authorization.split(' ');
+
+  if (type.toLocaleLowerCase() !== 'bearer') {
+    res.status(401).json({ message: 'Invalid authorization token' });
+    return;
+  }
+
   try {
-    const user = await authService.verifyToken(authorization);
+    const user = await authService.verifyToken(token);
     res.locals.user = user.dataValues;
   } catch (err) {
     if (err instanceof ApplicationError) {
@@ -41,7 +48,7 @@ export async function isAuthorized(req, res, next) {
  */
 export function isAdmin(req, res, next) {
   // check using authorization header
-  const { authorization } = req.headers;
+  const authorization = req.get('authorization');
 
   if (!authorization) {
     res.status(400).json({ message: 'Missing authorization header' });

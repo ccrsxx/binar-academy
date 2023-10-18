@@ -21,13 +21,6 @@ export async function register(req, res) {
   }
 
   try {
-    const encryptedPassword = await authService.hashPassword(password);
-
-    const newUser = /** @type {Models.UserAttributes} */ ({
-      ...body,
-      password: encryptedPassword
-    });
-
     const data = await userService.createUser(newUser);
 
     res.status(201).json({ message: 'User created successfully', data: data });
