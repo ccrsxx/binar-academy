@@ -1,11 +1,9 @@
-const utils = import('../../libs/utils.js');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const { generateRandomCar } = await utils;
+    const { generateRandomCar } = await import('../../libs/utils.js');
 
-    return queryInterface.bulkInsert('Cars', generateRandomCar());
+    return queryInterface.bulkInsert('Cars', await generateRandomCar());
   },
   down: (queryInterface, Sequelize) => {
     // @ts-ignore
