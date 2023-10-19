@@ -1,6 +1,6 @@
 import { Car } from '../models/index.js';
 import * as Models from '../models/car.js';
-import { generateRandomCar } from '../../libs/utils.js';
+import { generateRandomCar } from '../../libs/seed.js';
 
 export function getCars() {
   return Car.findAll();
@@ -35,6 +35,6 @@ export function destroyCar(id) {
 export async function resetCar() {
   await Car.destroy({ truncate: true });
   await Car.bulkCreate(
-    /** @type {Models.CarAttributes[]} */ (generateRandomCar())
+    /** @type {Models.CarAttributes[]} */ (await generateRandomCar())
   );
 }

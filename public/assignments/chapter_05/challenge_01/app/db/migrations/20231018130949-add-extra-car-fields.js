@@ -3,29 +3,30 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await Promise.all([
       queryInterface.addColumn('Cars', 'deletedAt', {
-        allowNull: true,
         type: Sequelize.DATE,
+        allowNull: true,
         defaultValue: null
       }),
       queryInterface.addColumn('Cars', 'createdBy', {
-        allowNull: false,
         type: Sequelize.UUID,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id'
         }
       }),
       queryInterface.addColumn('Cars', 'updatedBy', {
-        allowNull: true,
         type: Sequelize.UUID,
+        allowNull: true,
+        defaultValue: null,
         references: {
           model: 'Users',
           key: 'id'
         }
       }),
       queryInterface.addColumn('Cars', 'deletedBy', {
-        allowNull: true,
         type: Sequelize.UUID,
+        allowNull: true,
         defaultValue: null,
         references: {
           model: 'Users',

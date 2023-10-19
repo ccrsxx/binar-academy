@@ -27,6 +27,9 @@ export class ApplicationError extends Error {
 export function generateApplicationError(err, message, statusCode) {
   const assertedError = /** @type {ApplicationError} */ (err);
 
+  const { message: appErrorMessage, statusCode: appErrorStatusCode } =
+    assertedError;
+
   console.log({
     name: assertedError.name,
     msg: assertedError.message,
@@ -36,8 +39,18 @@ export function generateApplicationError(err, message, statusCode) {
     uniqueConstraintError: err instanceof UniqueConstraintError
   });
 
+  const isValidationError = [ValidationError, UniqueConstraintError].some(
+    (error) => err instanceof error
+  );
+
+  const parsedErrorMessage = appErrorMessage || 'Internal server error';
+
+  const parsedStatusCode = isValidationError
+    ? 400
+    : appErrorStatusCode || statusCode;
+
   return new ApplicationError(
-    `${message}: ${assertedError?.message || 'Internal server error'}`,
-    assertedError?.statusCode || statusCode || 500
+    `${message}: ${parsedErrorMessage}`,
+    parsedStatusCode
   );
 }

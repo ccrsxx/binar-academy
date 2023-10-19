@@ -1,7 +1,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const { generateRandomCar } = await import('../../libs/utils.js');
+    const { generateRandomCar } = await import('../../libs/seed.js');
 
     return queryInterface.bulkInsert('Cars', await generateRandomCar());
   },

@@ -3,7 +3,7 @@ import { ApplicationError } from '../../libs/error.js';
 import * as Types from '../../libs/types/common.js';
 
 /**
- * @type {Types.Controller}
+ * @type {Types.AuthorizedController}
  * @returns {Promise<void>}
  */
 export async function getCars(req, res) {
@@ -22,7 +22,7 @@ export async function getCars(req, res) {
 }
 
 /**
- * @type {Types.Controller}
+ * @type {Types.AuthorizedController}
  * @returns {Promise<void>}
  */
 export async function getCar(req, res) {
@@ -43,14 +43,16 @@ export async function getCar(req, res) {
 }
 
 /**
- * @type {Types.Controller}
+ * @type {Types.AuthorizedController}
  * @returns {Promise<void>}
  */
 export async function createCar(req, res) {
   const { body } = req;
 
+  const createdBy = res.locals.user.id;
+
   try {
-    const car = await carService.createCar(body);
+    const car = await carService.createCar(body, createdBy);
 
     res.status(201).json({ message: 'Car created successfully', data: car });
   } catch (err) {
@@ -64,7 +66,7 @@ export async function createCar(req, res) {
 }
 
 /**
- * @type {Types.Controller}
+ * @type {Types.AuthorizedController}
  * @returns {Promise<void>}
  */
 export async function updateCar(req, res) {
@@ -86,7 +88,7 @@ export async function updateCar(req, res) {
 }
 
 /**
- * @type {Types.Controller}
+ * @type {Types.AuthorizedController}
  * @returns {Promise<void>}
  */
 export async function destroyCar(req, res) {
@@ -107,7 +109,7 @@ export async function destroyCar(req, res) {
 }
 
 /**
- * @type {Types.Controller}
+ * @type {Types.AuthorizedController}
  * @returns {Promise<void>}
  */
 export async function resetCar(req, res) {

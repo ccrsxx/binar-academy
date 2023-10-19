@@ -6,8 +6,12 @@ if (process.env.NODE_ENV !== 'production') {
     .then(() => true)
     .catch(() => false);
 
+  const envPath = `.env.${isLocalEnvExists ? 'local' : 'development'}`;
+
+  console.info(`Loading environment variables from ${envPath}`);
+
   dotenv.config({
-    path: `.env.${isLocalEnvExists ? 'local' : 'development'}`
+    path: envPath
   });
 }
 

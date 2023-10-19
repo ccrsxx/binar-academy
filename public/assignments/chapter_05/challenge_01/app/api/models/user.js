@@ -67,13 +67,13 @@ export default (sequelize, DataTypes) => {
         }
       },
       role: {
-        type: DataTypes.ENUM('superadmin', 'admin', 'member'),
+        type: DataTypes.ENUM(...userRoles),
         allowNull: false,
         defaultValue: 'member',
         validate: {
           isIn: {
             args: [userRoles],
-            msg: 'Role is not valid'
+            msg: `Role must be one of ${userRoles.join(', ')}`
           }
         }
       },

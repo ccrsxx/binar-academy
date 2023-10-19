@@ -41,26 +41,55 @@ export async function isAuthorized(req, res, next) {
 }
 
 /**
- * Check if user is admin
+ * Check if user is admin or superadmin.
  *
- * @type {Types.Middleware}
+ * @type {Types.Middleware<
+ *   Types.ExtractLocalsMiddleware<typeof isAuthorized> & {
+ *     isAdmin: boolean;
+ *   }
+ * >}
  * @returns {Types.ReturnValueMiddleware}
  */
 export function isAdmin(req, res, next) {
-  // check using authorization header
-  const authorization = req.get('authorization');
+  const { role } = res.locals.user;
 
-  if (!authorization) {
-    res.status(400).json({ message: 'Missing authorization header' });
+  const isAdmin = ['superadmin', 'admin'].includes(role);
+
+  if (!isAdmin) {
+    res
+      .status(403)
+      .json({ message: 'Only admin is allowed for this endpoint' });
     return;
   }
 
-  const [type, token] = authorization.split(' ');
+  res.locals.isAdmin = isAdmin;
 
-  if (type.toLocaleLowerCase() !== 'bearer' || token !== 'admin') {
-    res.status(401).json({ message: 'Invalid authorization token' });
+  next();
+}
+
+/**
+ * Check if user is superadmin.
+ *
+ * @type {Types.Middleware<
+ *   Types.ExtractLocalsMiddleware<typeof isAuthorized> & {
+ *     isSuperAdmin: boolean;
+ *   }
+ * >}
+ * @returns {Types.ReturnValueMiddleware}
+ */
+export function isSuperAdmin(req, res, next) {
+  const { role } = res.locals.user;
+
+  const isSuperAdmin = role === 'superadmin';
+
+  if (!isSuperAdmin) {
+    res
+      .status(403)
+      .json({ message: 'Only superadmin is allowed for this endpoint' });
     return;
   }
+
+  res.locals.isSuperAdmin = isSuperAdmin;
 
   next();
 }

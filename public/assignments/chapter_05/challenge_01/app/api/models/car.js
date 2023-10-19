@@ -11,24 +11,16 @@ import { Model } from 'sequelize';
  * @property {string} description
  * @property {Date} availableAt
  * @property {Date} createdAt
+ * @property {string | null} createdBy
+ * @property {string | null} updatedBy
+ * @property {string | null} deletedBy
+ * @property {Date | null} deletedAt
  * @property {Date} updatedAt
  */
 
 export const carTypes = /** @type {const} */ (['small', 'medium', 'large']);
 
 /** @typedef {(typeof carTypes)[number]} CarTypes */
-
-/** @type {Omit<CarAttributes, 'createdAt' | 'updatedAt'>} */
-export const defaultCarType = {
-  id: '',
-  type: 'small',
-  name: '',
-  image: '',
-  capacity: 0,
-  rentPerDay: 0,
-  description: '',
-  availableAt: /** @type {Date} */ (/** @type {unknown} */ (''))
-};
 
 export const Models = {};
 
@@ -54,13 +46,99 @@ export default (sequelize, DataTypes) => {
   Car.init(
     // @ts-ignore
     {
-      name: DataTypes.NUMBER,
-      type: DataTypes.ENUM('small', 'medium', 'large'),
-      image: DataTypes.STRING,
-      capacity: DataTypes.INTEGER,
-      rentPerDay: DataTypes.INTEGER,
-      description: DataTypes.STRING,
-      availableAt: DataTypes.DATE
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [3, 255],
+            msg: 'Name must be at least 3 characters'
+          }
+        }
+      },
+      type: {
+        type: DataTypes.ENUM(...carTypes),
+        allowNull: false,
+        validate: {
+          isIn: {
+            args: [carTypes],
+            msg: `Type must be one of ${carTypes.join(', ')}`
+          }
+        }
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isUrl: {
+            msg: 'Image is not valid'
+          }
+        }
+      },
+      capacity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          isInt: {
+            msg: 'Capacity must be an integer'
+          }
+        }
+      },
+      rentPerDay: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        validate: {
+          isFloat: {
+            msg: 'Rent per day must be a float'
+          }
+        }
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [3, 255],
+            msg: 'Description must be at least 3 characters'
+          }
+        }
+      },
+      availableAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+          isDate: {
+            args: true,
+            msg: 'Available at must be a date'
+          }
+        }
+      },
+      createdBy: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
+      deletedBy: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        defaultValue: null,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
+      updatedBy: {
+        type: DataTypes.UUID,
+        allowNull: true,
+        defaultValue: null,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      }
     },
     {
       sequelize,

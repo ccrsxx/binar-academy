@@ -3,10 +3,7 @@ import bcrypt from 'bcrypt';
 import { Model } from 'sequelize';
 import { JWT_SECRET } from '../../libs/env.js';
 import * as userService from '../services/user.js';
-import {
-  ApplicationError,
-  generateApplicationError
-} from '../../libs/error.js';
+import { generateApplicationError } from '../../libs/error.js';
 import * as Models from '../models/user.js';
 
 /**
@@ -49,10 +46,11 @@ export async function isPasswordMatch(password, hashedPassword) {
 export async function generateToken(id) {
   try {
     const token = jwt.sign({ id }, JWT_SECRET, {
-      expiresIn: 10
+      expiresIn: '1d'
     });
 
-    console.log(token);
+    console.log({ token });
+
     return token;
   } catch (err) {
     throw generateApplicationError(err, 'Error while generating token', 500);
@@ -67,8 +65,22 @@ export async function generateToken(id) {
  */
 export async function verifyToken(token) {
   try {
-    const decodedUserId = /** @type {string} */ (jwt.verify(token, JWT_SECRET));
-    const user = await userService.getUser(decodedUserId);
+    const decodedToken = /** @type {jwt.JwtPayload} */ (
+      jwt.verify(token, JWT_SECRET)
+    );
+
+    console.log({ decodedToken });
+
+    const { id, iat, exp } = decodedToken;
+
+    const tokenCreatedAt = new Date(/** @type {number} */ (iat) * 1000);
+    const tokenExpiredAt = new Date(/** @type {number} */ (exp) * 1000);
+
+    const isTokenExpired = tokenExpiredAt < new Date();
+
+    console.log({ isTokenExpired, tokenCreatedAt, tokenExpiredAt });
+
+    const user = await userService.getUser(id);
     return user;
   } catch (err) {
     throw generateApplicationError(err, 'Error while verifying token', 500);

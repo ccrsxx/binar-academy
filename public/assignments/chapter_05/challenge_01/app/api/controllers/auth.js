@@ -1,27 +1,21 @@
-import { faker } from '@faker-js/faker';
 import { ApplicationError } from '../../libs/error.js';
-import jwt from 'jsonwebtoken';
+import { isSuperAdmin } from '../../middlewares/auth.js';
 import * as authService from '../services/auth.js';
 import * as userService from '../services/user.js';
 import * as Models from '../models/user.js';
 import * as Types from '../../libs/types/common.js';
 
 /**
- * @type {Types.Controller}
+ * @type {Types.Controller<typeof isSuperAdmin>}
  * @returns {Promise<void>}
  */
 export async function register(req, res) {
   const body = req.body;
 
-  const { email, password } = body;
-
-  if (!email || !password) {
-    res.status(400).json({ message: 'Email and password are required' });
-    return;
-  }
+  const superAdmin = res.locals.isSuperAdmin;
 
   try {
-    const data = await userService.createUser(newUser);
+    const data = await userService.createUser(body, superAdmin);
 
     res.status(201).json({ message: 'User created successfully', data: data });
   } catch (err) {
@@ -40,11 +34,6 @@ export async function register(req, res) {
  */
 export async function login(req, res) {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    res.status(400).json({ message: 'Email and password are required' });
-    return;
-  }
 
   try {
     const user = await userService.getUserByEmail(email);

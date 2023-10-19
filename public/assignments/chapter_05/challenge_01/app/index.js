@@ -1,9 +1,10 @@
 import express, { json } from 'express';
 import { HOST_PORT } from './libs/env.js';
 import root from './routes/index.js';
-import cars from './routes/cars.js';
-import reset from './routes/reset.js';
 import auth from './routes/auth.js';
+import cars from './routes/cars.js';
+import users from './routes/users.js';
+import reset from './routes/reset.js';
 
 /** @returns {void} */
 function main() {
@@ -16,6 +17,7 @@ function main() {
   root(app);
   auth(app);
   cars(app);
+  users(app);
   reset(app);
 
   app.listen(HOST_PORT, () =>

@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { isAuthorized } from '../middlewares/auth.js';
+import { isAdmin, isAuthorized } from '../middlewares/auth.js';
 import * as carController from '../api/controllers/car.js';
+import { isCarExists } from '../middlewares/validation.js';
 
 /**
  * @param {import('express').Application} app
@@ -13,11 +14,23 @@ export default (app) => {
 
   router.get('/', isAuthorized, carController.getCars);
 
-  router.get('/:id', isAuthorized, carController.getCar);
+  router.get('/:id', isAuthorized, isCarExists, carController.getCar);
 
-  router.post('/', isAuthorized, carController.createCar);
+  router.post('/', isAuthorized, isAdmin, carController.createCar);
 
-  router.put('/:id', isAuthorized, carController.updateCar);
+  router.put(
+    '/:id',
+    isAuthorized,
+    isAdmin,
+    isCarExists,
+    carController.updateCar
+  );
 
-  router.delete('/:id', isAuthorized, carController.destroyCar);
+  router.delete(
+    '/:id',
+    isAuthorized,
+    isAdmin,
+    isCarExists,
+    carController.destroyCar
+  );
 };

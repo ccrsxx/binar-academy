@@ -29,10 +29,20 @@ export async function getCar(id) {
   }
 }
 
-/** @param {Models.CarAttributes} payload */
-export async function createCar(payload) {
+/**
+ * @param {Models.CarAttributes} payload
+ * @param {string} createdBy
+ */
+export async function createCar(payload, createdBy) {
+  const carWithCreatedBy = {
+    ...payload,
+    createdBy
+  };
+
+  console.log({ carWithCreatedBy });
+
   try {
-    const car = await carRepository.createCar(payload);
+    const car = await carRepository.createCar(carWithCreatedBy);
     return car;
   } catch (err) {
     throw generateApplicationError(err, 'Error while creating car', 500);
@@ -46,6 +56,9 @@ export async function createCar(payload) {
 export async function updateCar(id, payload) {
   try {
     const car = await carRepository.updateCar(id, payload);
+
+    console.log({ car });
+
     return car;
   } catch (err) {
     throw generateApplicationError(err, 'Error while updating car', 500);

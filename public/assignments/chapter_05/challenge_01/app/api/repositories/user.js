@@ -1,5 +1,5 @@
 import { User } from '../models/index.js';
-import { generateRandomUser } from '../../libs/utils.js';
+import { generateRandomUser } from '../../libs/seed.js';
 import * as Models from '../models/user.js';
 
 /** @param {string} id */

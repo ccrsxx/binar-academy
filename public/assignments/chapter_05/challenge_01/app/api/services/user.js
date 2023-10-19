@@ -2,7 +2,7 @@ import {
   ApplicationError,
   generateApplicationError
 } from '../../libs/error.js';
-import * as AuthService from '../services/auth.js';
+import * as authService from '../services/auth.js';
 import * as userRepository from '../repositories/user.js';
 import * as Models from '../models/user.js';
 
@@ -41,22 +41,19 @@ export async function getUserByEmail(email) {
  * @param {boolean} isAdmin
  */
 export async function createUser(payload, isAdmin) {
-  const encryptedPassword = await authService.hashPassword(password);
+  const { password } = payload;
 
-  const newUser = /** @type {Models.UserAttributes} */ ({
-    ...body,
-    password: encryptedPassword
-  });
+  const encryptedPassword = await authService.hashPassword(password);
 
   try {
     /** @type {Models.UserAttributes} */
-    const parsedPayload = {
+    const payloadWithEncryptedPassword = {
       ...payload,
-      // @ts-ignore
-      role: isAdmin ? 'admin' : 'user'
+      role: isAdmin ? 'admin' : 'member',
+      password: encryptedPassword
     };
 
-    const car = await userRepository.createUser(parsedPayload);
+    const car = await userRepository.createUser(payloadWithEncryptedPassword);
     return car;
   } catch (err) {
     throw generateApplicationError(err, 'Error while creating user', 500);
