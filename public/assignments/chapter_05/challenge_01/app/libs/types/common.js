@@ -16,7 +16,8 @@ import * as Models from '../../api/models/user.js';
 /**
  * Function type for controller.
  *
- * @template {Middleware<any>} [T=Middleware<any>] Default is `Middleware<any>`
+ * @template {Middleware<ExtractLocalsMiddleware<T>>} [T=Middleware] Default is.
+ *   Default is `Middleware`
  * @callback Controller
  * @param {import('express').Request} req
  * @param {import('express').Response<any, ExtractLocalsMiddleware<T>>} res
@@ -25,8 +26,8 @@ import * as Models from '../../api/models/user.js';
 /**
  * Extracts the locals type from a middleware.
  *
- * @template {Middleware<any>} T
- * @typedef {Parameters<T>[1]['locals']} ExtractLocalsMiddleware
+ * @template {Middleware<ExtractLocalsMiddleware<T>>} T
+ * @typedef {Record<string, any> & Parameters<T>[1]['locals']} ExtractLocalsMiddleware
  */
 
 /**

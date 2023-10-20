@@ -1,8 +1,7 @@
 import {
   DatabaseError,
-  UniqueConstraintError,
   ValidationError,
-  ValidationErrorItem
+  UniqueConstraintError
 } from 'sequelize';
 
 export class ApplicationError extends Error {
