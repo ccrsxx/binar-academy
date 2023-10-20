@@ -21,17 +21,6 @@ export const userRoles = /** @type {const} */ ([
 
 /** @typedef {(typeof userRoles)[number]} UserRoles */
 
-/** @type {Omit<UserAttributes, 'createdAt' | 'updatedAt'>} */
-export const defaultUserType = {
-  id: '',
-  name: '',
-  role: 'member',
-  image: '',
-  email: '',
-  username: '',
-  password: ''
-};
-
 export const Models = {};
 
 /**
@@ -46,10 +35,24 @@ export default (sequelize, DataTypes) => {
      * Sequelize lifecycle. The `models/index` file will call this method
      * automatically.
      *
-     * @param {Model} models
+     * @param {Record<'Car', any>} models
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Car, {
+        foreignKey: 'createdBy',
+        as: 'createdByUser'
+      });
+
+      this.hasMany(models.Car, {
+        foreignKey: 'updatedBy',
+        as: 'updatedByUser'
+      });
+
+      this.hasMany(models.Car, {
+        foreignKey: 'deletedBy',
+        as: 'deletedByUser'
+      });
     }
   }
 

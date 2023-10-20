@@ -4,6 +4,7 @@ import {
 } from '../../libs/error.js';
 import * as carRepository from '../repositories/car.js';
 import * as Models from '../models/car.js';
+import { omitPropertiesFromObject } from '../../libs/utils.js';
 
 export async function getCars() {
   try {
@@ -31,18 +32,28 @@ export async function getCar(id) {
 
 /**
  * @param {Models.CarAttributes} payload
- * @param {string} createdBy
+ * @param {string} userId
  */
-export async function createCar(payload, createdBy) {
-  const carWithCreatedBy = {
-    ...payload,
-    createdBy
-  };
+export async function createCar(payload, userId) {
+  const parsedPayload = omitPropertiesFromObject(payload, [
+    'id',
+    'createdBy',
+    'updatedBy',
+    'deletedBy',
+    'createdAt',
+    'updatedAt',
+    'deletedAt'
+  ]);
 
-  console.log({ carWithCreatedBy });
+  const parsedPayloadWithCreatedBy = /** @type {Models.CarAttributes} */ ({
+    ...parsedPayload,
+    createdBy: userId
+  });
+
+  console.log({ parsedPayloadWithCreatedBy });
 
   try {
-    const car = await carRepository.createCar(carWithCreatedBy);
+    const car = await carRepository.createCar(parsedPayloadWithCreatedBy);
     return car;
   } catch (err) {
     throw generateApplicationError(err, 'Error while creating car', 500);
@@ -52,10 +63,30 @@ export async function createCar(payload, createdBy) {
 /**
  * @param {string} id
  * @param {Partial<Models.CarAttributes>} payload
+ * @param {string} userId
  */
-export async function updateCar(id, payload) {
+export async function updateCar(id, payload, userId) {
+  const parsedPayload = omitPropertiesFromObject(payload, [
+    'id',
+    'createdBy',
+    'updatedBy',
+    'deletedBy',
+    'createdAt',
+    'updatedAt',
+    'deletedAt'
+  ]);
+
+  /** @type {Partial<Models.CarAttributes>} */
+  const parsedPayloadWithUpdatedBy = {
+    ...parsedPayload,
+    updatedBy: userId
+  };
+
   try {
-    const car = await carRepository.updateCar(id, payload);
+    const [, [car]] = await carRepository.updateCar(
+      id,
+      parsedPayloadWithUpdatedBy
+    );
 
     console.log({ car });
 
@@ -65,10 +96,13 @@ export async function updateCar(id, payload) {
   }
 }
 
-/** @param {string} id */
-export async function destroyCar(id) {
+/**
+ * @param {string} id
+ * @param {string} userId
+ */
+export async function destroyCar(id, userId) {
   try {
-    const car = await carRepository.destroyCar(id);
+    const [, [car]] = await carRepository.destroyCar(id, userId);
     return car;
   } catch (err) {
     throw generateApplicationError(err, 'Error while deleting car', 500);

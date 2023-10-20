@@ -4,7 +4,7 @@ import * as CarModel from '../api/models/car.js';
 import * as UserModel from '../api/models/user.js';
 
 /**
- * Generate 100 dummy cars
+ * Generate 100 dummy cars.
  *
  * @returns {Promise<Omit<CarModel.CarAttributes, 'id'>[]>}
  */
@@ -34,7 +34,7 @@ export function generateRandomCar() {
 }
 
 /**
- * Generate 100 dummy users
+ * Generate 100 dummy users.
  *
  * @returns {Omit<UserModel.UserAttributes, 'id'>[]}
  */

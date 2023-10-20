@@ -1,4 +1,5 @@
-import * as Models from '../../api/models/user.js';
+import * as UserModel from '../../api/models/user.js';
+import * as CarModel from '../../api/models/car.js';
 
 /**
  * Function type for middleware.
@@ -31,7 +32,18 @@ import * as Models from '../../api/models/user.js';
 /**
  * Function type for authorized controller.
  *
- * @typedef {Controller<Middleware<{ user: Models.UserAttributes }>>} AuthorizedController
+ * @typedef {Controller<Middleware<{ user: UserModel.UserAttributes }>>} AuthorizedController
+ */
+
+/**
+ * Function type for authorized controller with car.
+ *
+ * @typedef {Controller<
+ *   Middleware<{
+ *     user: UserModel.UserAttributes;
+ *     car: CarModel.CarAttributes;
+ *   }>
+ * >} AuthorizedControllerWithCar
  */
 
 export const Types = {};

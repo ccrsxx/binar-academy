@@ -1,8 +1,4 @@
-import {
-  DatabaseError,
-  ValidationError,
-  UniqueConstraintError
-} from 'sequelize';
+import { ValidationError, UniqueConstraintError } from 'sequelize';
 
 export class ApplicationError extends Error {
   /**
@@ -16,7 +12,7 @@ export class ApplicationError extends Error {
 }
 
 /**
- * Generate application error
+ * Generate application error.
  *
  * @param {unknown} err
  * @param {string} message
@@ -26,27 +22,17 @@ export class ApplicationError extends Error {
 export function generateApplicationError(err, message, statusCode) {
   const assertedError = /** @type {ApplicationError} */ (err);
 
-  const { message: appErrorMessage, statusCode: appErrorStatusCode } =
-    assertedError;
-
-  console.log({
-    name: assertedError.name,
-    msg: assertedError.message,
-    cause: assertedError.cause,
-    databaseError: err instanceof DatabaseError,
-    validationError: err instanceof ValidationError,
-    uniqueConstraintError: err instanceof UniqueConstraintError
-  });
+  const { message: errorMessage, statusCode: errorStatusCode } = assertedError;
 
   const isValidationError = [ValidationError, UniqueConstraintError].some(
     (error) => err instanceof error
   );
 
-  const parsedErrorMessage = appErrorMessage || 'Internal server error';
+  const parsedErrorMessage = errorMessage || 'Internal server error';
 
   const parsedStatusCode = isValidationError
     ? 400
-    : appErrorStatusCode || statusCode;
+    : errorStatusCode || statusCode;
 
   return new ApplicationError(
     `${message}: ${parsedErrorMessage}`,

@@ -4,12 +4,18 @@ import * as Models from '../models/user.js';
 
 /** @param {string} id */
 export function getUser(id) {
-  return User.findByPk(id);
+  return User.findByPk(id, {
+    attributes: {
+      exclude: ['password']
+    }
+  });
 }
 
 /** @param {string} email */
 export function getUserByEmail(email) {
-  return User.findOne({ where: { email } });
+  return User.findOne({
+    where: { email }
+  });
 }
 
 /** @param {Models.UserAttributes} payload */

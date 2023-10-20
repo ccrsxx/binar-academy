@@ -49,8 +49,6 @@ export async function generateToken(id) {
       expiresIn: '1d'
     });
 
-    console.log({ token });
-
     return token;
   } catch (err) {
     throw generateApplicationError(err, 'Error while generating token', 500);
@@ -65,20 +63,9 @@ export async function generateToken(id) {
  */
 export async function verifyToken(token) {
   try {
-    const decodedToken = /** @type {jwt.JwtPayload} */ (
+    const { id } = /** @type {jwt.JwtPayload} */ (
       jwt.verify(token, JWT_SECRET)
     );
-
-    console.log({ decodedToken });
-
-    const { id, iat, exp } = decodedToken;
-
-    const tokenCreatedAt = new Date(/** @type {number} */ (iat) * 1000);
-    const tokenExpiredAt = new Date(/** @type {number} */ (exp) * 1000);
-
-    const isTokenExpired = tokenExpiredAt < new Date();
-
-    console.log({ isTokenExpired, tokenCreatedAt, tokenExpiredAt });
 
     const user = await userService.getUser(id);
     return user;

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import * as authController from '../api/controllers/auth.js';
-import { isValidCredential } from '../middlewares/validation.js';
-import { isSuperAdmin, isAuthorized } from '../middlewares/auth.js';
+import * as validationMiddleware from '../middlewares/validation.js';
+import * as authMiddleware from '../middlewares/auth.js';
 
 /**
  * @param {import('express').Application} app
@@ -12,14 +12,22 @@ export default (app) => {
 
   app.use('/auth', router);
 
-  router.post('/login', isValidCredential, authController.login);
+  router.post(
+    '/login',
+    validationMiddleware.isValidCredential,
+    authController.login
+  );
 
-  router.post('/register', isValidCredential, authController.register);
+  router.post(
+    '/register',
+    validationMiddleware.isValidCredential,
+    authController.register
+  );
 
   router.post(
     '/register/admin',
-    isAuthorized,
-    isSuperAdmin,
+    authMiddleware.isAuthorized,
+    authMiddleware.isSuperAdmin,
     authController.register
   );
 };

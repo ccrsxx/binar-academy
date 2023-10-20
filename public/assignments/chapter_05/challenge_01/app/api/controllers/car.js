@@ -22,7 +22,7 @@ export async function getCars(req, res) {
 }
 
 /**
- * @type {Types.AuthorizedController}
+ * @type {Types.AuthorizedControllerWithCar}
  * @returns {Promise<void>}
  */
 export async function getCar(req, res) {
@@ -49,10 +49,10 @@ export async function getCar(req, res) {
 export async function createCar(req, res) {
   const { body } = req;
 
-  const createdBy = res.locals.user.id;
+  const userId = res.locals.user.id;
 
   try {
-    const car = await carService.createCar(body, createdBy);
+    const car = await carService.createCar(body, userId);
 
     res.status(201).json({ message: 'Car created successfully', data: car });
   } catch (err) {
@@ -66,15 +66,17 @@ export async function createCar(req, res) {
 }
 
 /**
- * @type {Types.AuthorizedController}
+ * @type {Types.AuthorizedControllerWithCar}
  * @returns {Promise<void>}
  */
 export async function updateCar(req, res) {
   const { body } = req;
   const { id } = req.params;
 
+  const userId = res.locals.user.id;
+
   try {
-    const car = await carService.updateCar(id, body);
+    const car = await carService.updateCar(id, body, userId);
 
     res.status(200).json({ message: 'Car updated successfully', data: car });
   } catch (err) {
@@ -88,14 +90,16 @@ export async function updateCar(req, res) {
 }
 
 /**
- * @type {Types.AuthorizedController}
+ * @type {Types.AuthorizedControllerWithCar}
  * @returns {Promise<void>}
  */
 export async function destroyCar(req, res) {
   const { id } = req.params;
 
+  const userId = res.locals.user.id;
+
   try {
-    const car = await carService.destroyCar(id);
+    const car = await carService.destroyCar(id, userId);
 
     res.status(200).json({ message: 'Car deleted successfully', data: car });
   } catch (err) {

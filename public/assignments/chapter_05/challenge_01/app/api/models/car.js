@@ -36,10 +36,24 @@ export default (sequelize, DataTypes) => {
      * Sequelize lifecycle. The `models/index` file will call this method
      * automatically.
      *
-     * @param {Model} models
+     * @param {Record<'User', any>} models
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.User, {
+        foreignKey: 'createdBy',
+        as: 'createdByUser'
+      });
+
+      this.belongsTo(models.User, {
+        foreignKey: 'updatedBy',
+        as: 'updatedByUser'
+      });
+
+      this.belongsTo(models.User, {
+        foreignKey: 'deletedBy',
+        as: 'deletedByUser'
+      });
     }
   }
 
@@ -113,6 +127,11 @@ export default (sequelize, DataTypes) => {
           }
         }
       },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+        defaultValue: null
+      },
       createdBy: {
         type: DataTypes.UUID,
         allowNull: false,
@@ -142,7 +161,8 @@ export default (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Car'
+      modelName: 'Car',
+      paranoid: true
     }
   );
 

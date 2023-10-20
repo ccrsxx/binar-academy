@@ -1,14 +1,45 @@
-import { Car } from '../models/index.js';
+import { Car, User } from '../models/index.js';
 import * as Models from '../models/car.js';
 import { generateRandomCar } from '../../libs/seed.js';
 
 export function getCars() {
-  return Car.findAll();
+  return Car.findAll({
+    attributes: {
+      exclude: ['createdBy', 'updatedBy', 'deletedBy']
+    }
+  });
 }
 
 /** @param {string} id */
 export function getCar(id) {
-  return Car.findByPk(id);
+  return Car.findByPk(id, {
+    include: [
+      {
+        model: User,
+        as: 'createdByUser',
+        attributes: {
+          exclude: ['password']
+        }
+      },
+      {
+        model: User,
+        as: 'updatedByUser',
+        attributes: {
+          exclude: ['password']
+        }
+      },
+      {
+        model: User,
+        as: 'deletedByUser',
+        attributes: {
+          exclude: ['password']
+        }
+      }
+    ],
+    attributes: {
+      exclude: ['createdBy', 'updatedBy', 'deletedBy']
+    }
+  });
 }
 
 /** @param {Models.CarAttributes} payload */
@@ -27,9 +58,16 @@ export function updateCar(id, payload) {
   });
 }
 
-/** @param {string} id */
-export function destroyCar(id) {
-  return Car.destroy({ where: { id } });
+/**
+ * @param {string} id
+ * @param {string} userId
+ */
+export async function destroyCar(id, userId) {
+  await Car.destroy({ where: { id } });
+  return Car.update(
+    { deletedBy: userId },
+    { where: { id }, returning: true, paranoid: false }
+  );
 }
 
 export async function resetCar() {
