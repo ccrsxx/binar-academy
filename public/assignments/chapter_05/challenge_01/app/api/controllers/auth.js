@@ -38,11 +38,6 @@ export async function login(req, res) {
   try {
     const user = await userService.getUserByEmail(email);
 
-    if (!user) {
-      res.status(404).json({ message: 'User not found' });
-      return;
-    }
-
     const isMatch = await authService.isPasswordMatch(
       password,
       user.dataValues.password

@@ -11,8 +11,6 @@ import * as Models from '../../api/models/user.js';
  * @param {import('express').NextFunction} next
  */
 
-/** @typedef {import('express').NextFunction | void} ReturnValueMiddleware */
-
 /**
  * Function type for controller.
  *

@@ -4,10 +4,10 @@ import * as Models from '../api/models/user.js';
 import * as Types from '../libs/types/common.js';
 
 /**
- * Check if user is authorized
+ * Check if user is authorized.
  *
  * @type {Types.Middleware<{ user: Models.UserAttributes }>}
- * @returns {Types.ReturnValueMiddleware}
+ * @returns {void}
  */
 export async function isAuthorized(req, res, next) {
   const authorization = req.get('authorization');
@@ -48,7 +48,7 @@ export async function isAuthorized(req, res, next) {
  *     isAdmin: boolean;
  *   }
  * >}
- * @returns {Types.ReturnValueMiddleware}
+ * @returns {void}
  */
 export function isAdmin(req, res, next) {
   const { role } = res.locals.user;
@@ -75,7 +75,7 @@ export function isAdmin(req, res, next) {
  *     isSuperAdmin: boolean;
  *   }
  * >}
- * @returns {Types.ReturnValueMiddleware}
+ * @returns {void}
  */
 export function isSuperAdmin(req, res, next) {
   const { role } = res.locals.user;

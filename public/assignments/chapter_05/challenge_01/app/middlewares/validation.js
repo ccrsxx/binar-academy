@@ -12,7 +12,7 @@ import * as Types from '../libs/types/common.js';
  *     car: Models.CarAttributes;
  *   }
  * >}
- * @returns {Promise<Types.ReturnValueMiddleware>}
+ * @returns {Promise<void>}
  */
 export async function isCarExists(req, res, next) {
   const { id } = req.params;
@@ -37,7 +37,7 @@ export async function isCarExists(req, res, next) {
  * Check if valid credentials.
  *
  * @type {Types.Middleware}
- * @returns {Types.ReturnValueMiddleware}
+ * @returns {void}
  */
 export function isValidCredential(req, res, next) {
   const { email, password } = req.body;
