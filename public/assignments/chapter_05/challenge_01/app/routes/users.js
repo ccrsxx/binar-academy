@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import * as userController from '../api/controllers/user.js';
 import * as authMiddleware from '../middlewares/auth.js';
+import * as Types from '../libs/types/common.js';
 
 /**
- * @param {import('express').Application} app
+ * @type {Types.Route}
  * @returns {void}
  */
 export default (app) => {

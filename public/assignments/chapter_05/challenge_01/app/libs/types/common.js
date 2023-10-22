@@ -23,6 +23,13 @@ import * as CarModel from '../../api/models/car.js';
  */
 
 /**
+ * Function type for Route.
+ *
+ * @callback Route
+ * @param {import('express').Application} app
+ */
+
+/**
  * Extracts the locals type from a middleware.
  *
  * @template {Middleware<ExtractLocalsMiddleware<T>>} T

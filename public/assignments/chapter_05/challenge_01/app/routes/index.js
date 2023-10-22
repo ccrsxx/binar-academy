@@ -1,7 +1,8 @@
 import * as indexController from '../api/controllers/index.js';
+import * as Types from '../libs/types/common.js';
 
 /**
- * @param {import('express').Application} app
+ * @type {Types.Route}
  * @returns {void}
  */
 export default (app) => {

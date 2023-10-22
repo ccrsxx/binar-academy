@@ -2,9 +2,10 @@ import { Router } from 'express';
 import * as authMiddleware from '../middlewares/auth.js';
 import * as carController from '../api/controllers/car.js';
 import * as validationMiddleware from '../middlewares/validation.js';
+import * as Types from '../libs/types/common.js';
 
 /**
- * @param {import('express').Application} app
+ * @type {Types.Route}
  * @returns {void}
  */
 export default (app) => {
@@ -42,5 +43,12 @@ export default (app) => {
     authMiddleware.isAdmin,
     validationMiddleware.isCarExists,
     carController.destroyCar
+  );
+
+  router.get(
+    '/reset',
+    authMiddleware.isAuthorized,
+    authMiddleware.isSuperAdmin,
+    carController.resetCar
   );
 };

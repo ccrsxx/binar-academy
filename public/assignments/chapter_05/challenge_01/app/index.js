@@ -1,10 +1,10 @@
 import express, { json } from 'express';
 import { HOST_PORT } from './libs/env.js';
 import root from './routes/index.js';
+import docs from './routes/docs.js';
 import auth from './routes/auth.js';
 import cars from './routes/cars.js';
 import users from './routes/users.js';
-import reset from './routes/reset.js';
 
 /** @returns {void} */
 function main() {
@@ -15,10 +15,10 @@ function main() {
 
   // Routes
   root(app);
+  docs(app);
   auth(app);
   cars(app);
   users(app);
-  reset(app);
 
   app.listen(HOST_PORT, () =>
     console.log(`Server running on port ${HOST_PORT}`)
