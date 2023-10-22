@@ -1,0 +1,708 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Challenge 1 - Express App with Authentication and PostgresSQL",
+    "description": "Write an express app with Authentication and PostgreSQL",
+    "version": "1.0.11"
+  },
+  "externalDocs": {
+    "description": "Repository",
+    "url": "https://github.com/ccrsxx/binar-academy"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local server"
+    },
+    {
+      "url": "https://dev.risalamin.com",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "index",
+      "description": "Everything about your Index"
+    },
+    {
+      "name": "auth",
+      "description": "Everything about your Auth"
+    },
+    {
+      "name": "users",
+      "description": "Everything about your Users"
+    },
+    {
+      "name": "cars",
+      "description": "Everything about your Cars"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["index"],
+        "summary": "Welcome to API",
+        "description": "Returns a welcome message and docs url",
+        "operationId": "index",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Welcome to Emilia API"
+                    },
+                    "docs": {
+                      "type": "string",
+                      "example": "https://dev.risalamin.com/docs"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Login",
+        "description": "Login with username and password",
+        "operationId": "login",
+        "requestBody": {
+          "description": "Login as an superadmin",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "emilia@rezero.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "emilia"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZiOWRlNThjLTIzNTctNDdhOS1iNWU1LWMzM2IwNWE4MzE2NiIsImlhdCI6MTY5Nzk4NjI0OCwiZXhwIjoxNjk4MDcyNjQ4fQ.AeyJQD5-VFCsue5gtwelyTrKKile_zpk1EOCJoarQxY"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Register",
+        "description": "Register with username, email and password",
+        "operationId": "register",
+        "requestBody": {
+          "description": "Register as an member",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterUser"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          }
+        }
+      }
+    },
+    "/auth/register/admin": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Register",
+        "description": "Register with username, email and password",
+        "operationId": "registerAdmin",
+        "requestBody": {
+          "description": "Register as an member",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterUser"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "role": {
+                          "type": "string",
+                          "example": "admin"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied"
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Get current user",
+        "description": "Get current user",
+        "operationId": "getCurrentUser",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/cars": {
+      "get": {
+        "tags": ["cars"],
+        "summary": "Get all cars",
+        "description": "Get all cars",
+        "operationId": "getCars",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Car"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["cars"],
+        "summary": "Create a new car",
+        "description": "Create a new car",
+        "operationId": "createCar",
+        "requestBody": {
+          "description": "Create a new car in the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterCar"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarWithUser"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/cars/{carId}": {
+      "get": {
+        "tags": ["cars"],
+        "summary": "Get car by id",
+        "description": "Get car by id",
+        "operationId": "getCarById",
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "description": "ID of car to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarWithUser"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Car not found"
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["cars"],
+        "summary": "Update car by id",
+        "description": "Update car by id",
+        "operationId": "updateCarById",
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "description": "ID of car to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update an existent car in the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarWithUser"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Car not found"
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["cars"],
+        "summary": "Delete car by id",
+        "description": "Delete car by id",
+        "operationId": "deleteCarById",
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "description": "ID of car to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarWithUser"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Car not found"
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/cars/reset": {
+      "post": {
+        "tags": ["cars"],
+        "summary": "Reset all cars",
+        "description": "Reset all cars",
+        "operationId": "resetCars",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Car reset successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "name": {
+            "type": "string",
+            "example": "Satella"
+          },
+          "email": {
+            "type": "string",
+            "example": "satella@rezero.com"
+          },
+          "image": {
+            "type": "string",
+            "example": "random_image.png"
+          },
+          "username": {
+            "type": "string",
+            "example": "satella"
+          },
+          "password": {
+            "type": "string",
+            "example": "$2b$10$m9qQtOm.ilSASXlPIdVaROsO4ExZAs9NQZvZUx7bG7OZqGScy3JMm"
+          },
+          "role": {
+            "type": "string",
+            "example": "member",
+            "enum": ["superadmin", "admin", "user"]
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2021-01-01T00:00:00.000Z"
+          }
+        }
+      },
+      "RegisterUser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Satella"
+          },
+          "email": {
+            "type": "string",
+            "example": "satella@rezero.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "satella"
+          },
+          "image": {
+            "type": "string",
+            "example": "random_image.png"
+          },
+          "username": {
+            "type": "string",
+            "example": "satella"
+          }
+        }
+      },
+      "Car": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "name": {
+            "type": "string",
+            "example": "Toyota"
+          },
+          "type": {
+            "type": "string",
+            "example": "small",
+            "enum": ["small", "medium", "large"]
+          },
+          "image": {
+            "type": "string",
+            "example": "random_image.png"
+          },
+          "capacity": {
+            "type": "integer",
+            "example": 4
+          },
+          "rentPerDay": {
+            "type": "integer",
+            "example": 100000
+          },
+          "description": {
+            "type": "string",
+            "description": "Good condition"
+          },
+          "availableAt": {
+            "type": "string",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2021-01-01T00:00:00.000Z"
+          },
+          "deletedAt": {
+            "type": "string",
+            "example": "2021-01-01T00:00:00.000Z"
+          }
+        }
+      },
+      "RegisterCar": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Toyota"
+          },
+          "type": {
+            "type": "string",
+            "example": "small",
+            "enum": ["small", "medium", "large"]
+          },
+          "image": {
+            "type": "string",
+            "example": "random_image.png"
+          },
+          "capacity": {
+            "type": "integer",
+            "example": 4
+          },
+          "rentPerDay": {
+            "type": "integer",
+            "example": 100000
+          },
+          "description": {
+            "type": "string",
+            "description": "Good condition"
+          },
+          "availableAt": {
+            "type": "string",
+            "example": "2021-01-01T00:00:00.000Z"
+          }
+        }
+      },
+      "CarWithUser": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Car"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "createdByUser": {
+                "$ref": "#/components/schemas/User"
+              },
+              "updatedByUser": {
+                "$ref": "#/components/schemas/User"
+              },
+              "deletedByUser": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        ]
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "Car": {
+        "description": "Car object that needs to be added to the store",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Car"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Car"
+            }
+          }
+        }
+      },
+      "CarArray": {
+        "description": "List of car object",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Car"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "token": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Enter the token with the `Bearer: ` prefix, e.g. \"Bearer abcde12345\"."
+      }
+    }
+  }
+}

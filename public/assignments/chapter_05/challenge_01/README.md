@@ -1,6 +1,6 @@
 ---
-title: Challenge 1 - Express app with Authentication
-description: Write an Express app with authentication
+title: Challenge 1 - Express app with Authentication and PostgreSQL
+description: Write an Express app with Authentication and PostgreSQL
 ---
 
 # Simple CRUD application for rental cars
