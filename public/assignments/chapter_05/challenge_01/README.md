@@ -5,7 +5,7 @@ description: Write an Express app with Authentication and PostgreSQL
 
 # Simple CRUD application for rental cars
 
-All the documentation for the API can be found on [Postman](https://www.postman.com/ccrsxx/workspace/rental-car).
+All the documentation for the API can be found on [Swagger](https://dev.risalamin.com/docs).
 
 The API is deployed on [https://dev.risalamin.com](https://dev.risalamin.com), you can hit the endpoints directly from there. It might not be available on the future, so you can also run it locally.
 
@@ -14,6 +14,30 @@ Here's the ERD for the database:
 <p align='center'>
   <img src='./.github/assets/erd.png' />
 </p>
+
+## List of available users
+
+1. Superadmin
+
+   - email: emilia@rezero.com
+   - password: emilia
+
+1. Admin
+
+   - email: rem@rezero.com
+   - password: rem
+
+1. Member
+
+   - email: subaru@rezero.com
+   - password: subaru
+
+## How to authenticate
+
+1. Login with username and password on [this](#/auth/login) endpoint with any of the available users above.
+1. Copy the token from the response.
+1. Click the `Authorize` button on the top right corner of this page.
+1. Paste the token inside the `value` field and click `Authorize` button. Don't forget to add `Bearer ` prefix before the token.
 
 ## Development
 
@@ -28,7 +52,7 @@ Here are the steps to run the project locally.
 1. Change directory to the project
 
    ```bash
-   cd binar-academy/public/assignments/chapter_04/challenge_01
+   cd binar-academy/public/assignments/chapter_05/challenge_01
    ```
 
 1. Install dependencies
@@ -37,7 +61,7 @@ Here are the steps to run the project locally.
    npm i
    ```
 
-1. Check you config in [db/config/database.js](./db/config/database.js). Make sure the username and password match your local database.
+1. Check your credentials on `.env.development`. Make sure you have the correct credentials for your PostgreSQL database.
 
 1. Create DB if not exists
 
