@@ -16,9 +16,6 @@ import * as UserModel from './user.js';
  * @property {string | null} updatedBy
  * @property {string | null} deletedBy
  * @property {Date | null} deletedAt
- * @property {UserModel.UserAttributes | null} createdByUser
- * @property {UserModel.UserAttributes | null} updatedByUser
- * @property {UserModel.UserAttributes | null} deletedByUser
  * @property {Date} updatedAt
  */
 

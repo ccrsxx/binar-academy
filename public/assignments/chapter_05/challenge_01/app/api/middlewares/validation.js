@@ -1,8 +1,8 @@
-import { ApplicationError } from '../libs/error.js';
+import { ApplicationError } from '../../libs/error.js';
 import { isAdmin } from './auth.js';
-import * as carService from '../api/services/car.js';
-import * as Models from '../api/models/car.js';
-import * as Types from '../libs/types/common.js';
+import * as carService from '../services/car.js';
+import * as Models from '../models/car.js';
+import * as Types from '../../libs/types/common.js';
 
 /**
  * Check if car exists.

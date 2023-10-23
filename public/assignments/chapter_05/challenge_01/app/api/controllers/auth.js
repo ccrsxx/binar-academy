@@ -1,5 +1,5 @@
 import { ApplicationError } from '../../libs/error.js';
-import { isSuperAdmin } from '../../middlewares/auth.js';
+import { isSuperAdmin } from '../middlewares/auth.js';
 import * as authService from '../services/auth.js';
 import * as userService from '../services/user.js';
 import * as Models from '../models/user.js';

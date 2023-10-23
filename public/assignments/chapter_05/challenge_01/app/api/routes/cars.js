@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import * as authMiddleware from '../middlewares/auth.js';
-import * as carController from '../api/controllers/car.js';
+import * as carController from '../controllers/car.js';
 import * as validationMiddleware from '../middlewares/validation.js';
-import * as Types from '../libs/types/common.js';
+import * as Types from '../../libs/types/common.js';
 
 /**
  * @type {Types.Route}

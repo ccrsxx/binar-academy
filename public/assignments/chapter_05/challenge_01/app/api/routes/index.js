@@ -1,5 +1,5 @@
-import * as indexController from '../api/controllers/index.js';
-import * as Types from '../libs/types/common.js';
+import * as indexController from '../controllers/index.js';
+import * as Types from '../../libs/types/common.js';
 
 /**
  * @type {Types.Route}

@@ -1,7 +1,7 @@
-import { ApplicationError } from '../libs/error.js';
-import * as authService from '../api/services/auth.js';
-import * as Models from '../api/models/user.js';
-import * as Types from '../libs/types/common.js';
+import { ApplicationError } from '../../libs/error.js';
+import * as authService from '../services/auth.js';
+import * as Models from '../models/user.js';
+import * as Types from '../../libs/types/common.js';
 
 /**
  * Check if user is authorized.

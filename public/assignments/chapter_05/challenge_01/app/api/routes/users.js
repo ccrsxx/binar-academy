@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import * as userController from '../api/controllers/user.js';
+import * as userController from '../controllers/user.js';
 import * as authMiddleware from '../middlewares/auth.js';
-import * as Types from '../libs/types/common.js';
+import * as Types from '../../libs/types/common.js';
 
 /**
  * @type {Types.Route}

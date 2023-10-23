@@ -1,10 +1,10 @@
 import express, { json } from 'express';
 import { HOST_PORT } from './libs/env.js';
-import root from './routes/index.js';
-import docs from './routes/docs.js';
-import auth from './routes/auth.js';
-import cars from './routes/cars.js';
-import users from './routes/users.js';
+import root from './api/routes/index.js';
+import docs from './api/routes/docs.js';
+import auth from './api/routes/auth.js';
+import cars from './api/routes/cars.js';
+import users from './api/routes/users.js';
 
 /** @returns {void} */
 function main() {
