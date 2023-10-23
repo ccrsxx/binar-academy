@@ -45,7 +45,7 @@ export default (app) => {
     carController.destroyCar
   );
 
-  router.get(
+  router.post(
     '/reset',
     authMiddleware.isAuthorized,
     authMiddleware.isSuperAdmin,
