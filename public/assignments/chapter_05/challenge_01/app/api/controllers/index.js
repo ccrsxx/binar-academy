@@ -7,6 +7,6 @@ import * as Types from '../../libs/types/common.js';
 export function ping(req, res) {
   res.status(200).json({
     message: 'Ping successfully',
-    documentation: 'https://www.postman.com/ccrsxx/workspace/rental-car'
+    documentation: 'https://dev.risalamin.com/docs'
   });
 }
