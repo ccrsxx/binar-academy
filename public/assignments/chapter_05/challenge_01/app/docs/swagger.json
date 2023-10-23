@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Challenge 1 - Express App with Authentication and PostgresSQL",
-    "description": "An express app with Authentication and PostgreSQL\n\n## List of available users\n\n1. Superadmin\n\n   - email: emilia@rezero.com\n   - password: emilia\n\n1. Admin\n\n    - email: rem@rezero.com\n    - password: rem\n\n1. Member\n\n    - email: subaru@rezero.com\n    - password: subaru\n\n## How to authenticate\n\n1. Login with username and password on [this](#/auth/login) endpoint with any of the available users above.\n1. Copy the token from the response.\n1. Click the `Authorize` button on the top right corner of this page.\n1. Paste the token inside the `value` field and click `Authorize` button. Don't forget to add `Bearer ` prefix before the token.",
+    "description": "An express app with Authentication and PostgreSQL\n\n## List of available users\n\n1. Superadmin\n\n   - email: emilia@rezero.com\n   - password: emilia\n\n1. Admin\n\n    - email: rem@rezero.com\n    - password: rem\n\n1. Member\n\n    - email: subaru@rezero.com\n    - password: subaru\n\n## How to authenticate\n\n1. Login with email and password on [this](#/auth/login) endpoint with any of the available users above.\n1. Copy the token from the response.\n1. Click the `Authorize` button on the top right corner of this page.\n1. Paste the token inside the `value` field and click `Authorize` button. Don't forget to add `Bearer ` prefix before the token.",
     "version": "1.0.0",
     "license": {
       "name": "Production Server",
@@ -76,7 +76,7 @@
       "post": {
         "tags": ["auth"],
         "summary": "Login",
-        "description": "Login with username and password",
+        "description": "Login with email and password",
         "operationId": "login",
         "requestBody": {
           "description": "Login as an superadmin",
