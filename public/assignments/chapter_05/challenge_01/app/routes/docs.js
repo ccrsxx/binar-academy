@@ -7,5 +7,12 @@ import * as Types from '../libs/types/common.js';
  * @returns {void}
  */
 export default (app) => {
-  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  /** @type {swaggerUi.SwaggerUiOptions} */
+  const options = {
+    swaggerOptions: {
+      deepLinking: true
+    }
+  };
+
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 };
