@@ -666,7 +666,7 @@
           },
           "image": {
             "type": "string",
-            "example": "random_image.png"
+            "example": "https://random-site.com/random-image.png"
           },
           "username": {
             "type": "string",
@@ -708,7 +708,7 @@
           },
           "image": {
             "type": "string",
-            "example": "random_image.png"
+            "example": "https://random-site.com/random-image.png"
           },
           "username": {
             "type": "string",
@@ -747,7 +747,7 @@
           },
           "image": {
             "type": "string",
-            "example": "random_image.png"
+            "example": "https://random-site.com/random-image.png"
           },
           "capacity": {
             "type": "integer",
@@ -793,7 +793,7 @@
           },
           "image": {
             "type": "string",
-            "example": "random_image.png"
+            "example": "https://random-site.com/random-image.png"
           },
           "capacity": {
             "type": "integer",
