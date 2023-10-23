@@ -58,7 +58,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Welcome to Emilia API"
+                      "example": "Ping successfully"
                     },
                     "docs": {
                       "type": "string",
