@@ -32,13 +32,6 @@ Here's the ERD for the database:
    - email: subaru@rezero.com
    - password: subaru
 
-## How to authenticate
-
-1. Login with username and password on [this](#/auth/login) endpoint with any of the available users above.
-1. Copy the token from the response.
-1. Click the `Authorize` button on the top right corner of this page.
-1. Paste the token inside the `value` field and click `Authorize` button. Don't forget to add `Bearer ` prefix before the token.
-
 ## Development
 
 Here are the steps to run the project locally.
