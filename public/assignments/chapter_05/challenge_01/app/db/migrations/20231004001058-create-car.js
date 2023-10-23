@@ -25,7 +25,7 @@ module.exports = {
         allowNull: false
       },
       rentPerDay: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: false
       },
       description: {
