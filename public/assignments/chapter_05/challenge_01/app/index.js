@@ -21,7 +21,7 @@ function main() {
   users(app);
 
   app.listen(HOST_PORT, () =>
-    console.log(`Server running on port ${HOST_PORT}`)
+    console.info(`Server running on port ${HOST_PORT}`)
   );
 }
 

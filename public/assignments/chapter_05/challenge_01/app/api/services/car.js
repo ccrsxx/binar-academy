@@ -50,8 +50,6 @@ export async function createCar(payload, userId) {
     createdBy: userId
   });
 
-  console.log({ parsedPayloadWithCreatedBy });
-
   try {
     const car = await carRepository.createCar(parsedPayloadWithCreatedBy);
     return car;
@@ -87,8 +85,6 @@ export async function updateCar(id, payload, userId) {
       id,
       parsedPayloadWithUpdatedBy
     );
-
-    console.log({ car });
 
     return car;
   } catch (err) {
