@@ -394,7 +394,21 @@
             }
           },
           "400": {
-            "$ref": "#/components/responses/MissingAuthorizationError"
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingAuthorizationError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationError"
+                    }
+                  ]
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/InvalidAuthorizationError"
@@ -523,7 +537,21 @@
             }
           },
           "400": {
-            "$ref": "#/components/responses/MissingAuthorizationError"
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingAuthorizationError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationError"
+                    }
+                  ]
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/InvalidAuthorizationError"
