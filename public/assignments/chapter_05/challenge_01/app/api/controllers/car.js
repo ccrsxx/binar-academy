@@ -1,5 +1,6 @@
-import * as carService from '../services/car.js';
 import { ApplicationError } from '../../libs/error.js';
+import { uploadCloudinary } from '../middlewares/upload.js';
+import * as carService from '../services/car.js';
 import * as Types from '../../libs/types/common.js';
 
 /**
@@ -43,16 +44,18 @@ export async function getCar(req, res) {
 }
 
 /**
- * @type {Types.AuthorizedController}
+ * @type {Types.AuthorizedController<typeof uploadCloudinary>}
  * @returns {Promise<void>}
  */
 export async function createCar(req, res) {
   const { body } = req;
 
-  const userId = res.locals.user.id;
+  const { id: userId, image } = res.locals.user;
 
   try {
-    const car = await carService.createCar(body, userId);
+    const bodyWithImage = { ...body, image: image };
+
+    const car = await carService.createCar(bodyWithImage, userId);
 
     res.status(201).json({ message: 'Car created successfully', data: car });
   } catch (err) {

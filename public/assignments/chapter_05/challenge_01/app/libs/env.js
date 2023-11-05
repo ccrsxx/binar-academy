@@ -21,5 +21,8 @@ export const {
   JWT_SECRET,
   DB_USERNAME,
   DB_PASSWORD,
-  DB_DATABASE
+  DB_DATABASE,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_SECRET
 } = /** @type {Record<string, string>} */ (process.env);

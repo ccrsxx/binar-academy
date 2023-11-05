@@ -39,7 +39,11 @@ import * as CarModel from '../../api/models/car.js';
 /**
  * Function type for authorized controller.
  *
- * @typedef {Controller<Middleware<{ user: UserModel.UserAttributes }>>} AuthorizedController
+ * @template {Middleware<ExtractLocalsMiddleware<T>>} [T=Middleware] Default is.
+ *   Default is `Middleware`
+ * @typedef {Controller<
+ *   Middleware<{ user: UserModel.UserAttributes } & ExtractLocalsMiddleware<T>>
+ * >} AuthorizedController
  */
 
 /**

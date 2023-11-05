@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import * as authMiddleware from '../middlewares/auth.js';
+import * as uploadMiddleware from '../middlewares/upload.js';
 import * as carController from '../controllers/car.js';
 import * as validationMiddleware from '../middlewares/validation.js';
 import * as Types from '../../libs/types/common.js';
@@ -26,6 +27,8 @@ export default (app) => {
     '/',
     authMiddleware.isAuthorized,
     authMiddleware.isAdmin,
+    uploadMiddleware.parseImage,
+    uploadMiddleware.uploadCloudinary,
     carController.createCar
   );
 
