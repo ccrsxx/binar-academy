@@ -11,29 +11,33 @@ export async function extractMetaData(
 ): Promise<Assignment> {
   const assignmentRoot = join(ASSIGNMENT_PATH, directory, slug);
 
-  const isNodeAssignment = await access(join(assignmentRoot, 'index.js')).then(
-    () => true,
-    () => false
-  );
-
-  const url = isNodeAssignment
-    ? `https://github.com/ccrsxx/binar-academy/tree/main/public/assignments/${directory}/${slug}`
-    : join('assignments', directory, slug, 'index.html');
-
   const metadataFile = await readFile(
     join(assignmentRoot, 'README.md'),
     'utf-8'
   ).catch(() => null);
 
-  if (!metadataFile)
+  const hasTopLevelScript = await access(join(assignmentRoot, 'index.js')).then(
+    () => true,
+    () => false
+  );
+
+  const markdownData = metadataFile
+    ? (matter(metadataFile).data as Details)
+    : null;
+
+  const isNodeProject = hasTopLevelScript || markdownData?.nodeProject;
+
+  const url = isNodeProject
+    ? `https://github.com/ccrsxx/binar-academy/tree/main/public/assignments/${directory}/${slug}`
+    : join('assignments', directory, slug, 'index.html');
+
+  if (!markdownData)
     return {
       url,
       slug,
       title: slug,
       description: 'No description provided.'
     };
-
-  const markdownData = matter(metadataFile).data as Details;
 
   return {
     ...markdownData,

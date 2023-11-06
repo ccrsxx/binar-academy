@@ -1,6 +1,7 @@
 ---
 title: Challenge 1 - Express app with Authentication and PostgreSQL
 description: Write an Express app with Authentication and PostgreSQL
+nodeProject: true
 ---
 
 # Simple CRUD application for rental cars

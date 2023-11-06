@@ -1,6 +1,7 @@
 ---
 title: Challenge 1 - Rental Car Landing Page
 description: Write an React app
+nodeProject: true
 ---
 
 ## Development
