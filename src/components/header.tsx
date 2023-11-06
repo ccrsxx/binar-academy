@@ -1,21 +1,21 @@
+import Image from 'next/image';
 import { FiGithub } from 'react-icons/fi';
-import { Logo } from './logo';
 
 export function Header(): JSX.Element {
   return (
     <header className='flex justify-between items-center shadow-lg my-4'>
       <div className='flex gap-2 items-center'>
-        <Logo />
+        <Image src='/logo.svg' width={48} height={48} alt='Logo' />
         <div>
           <h1 className='font-bold'>Binar Academy</h1>
           <p className='-mt-1 text-sm text-gray-200'>
             at{' '}
             <a
               className='custom-underline'
-              href='https://ccrsxx.me'
+              href='https://risalamin.com'
               target='_blank'
             >
-              ccrsxx.me
+              risalamin.com
             </a>
           </p>
         </div>

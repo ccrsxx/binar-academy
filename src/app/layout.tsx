@@ -17,7 +17,7 @@ const { title, description, image }: CustomMetadata = {
   description:
     'This is a list of the assignments that I have done during the Binar Academy.',
   image:
-    'https://ccrsxx.me/api/og?title=Binar%20Academy&description=This%20is%20a%20list%20of%20the%20assignments%20that%20I%20have%20done%20during%20the%20Binar%20Academy.'
+    'https://risalamin.com/api/og?title=Binar%20Academy&description=This%20is%20a%20list%20of%20the%20assignments%20that%20I%20have%20done%20during%20the%20Binar%20Academy.'
 };
 
 export const metadata: Metadata = {
