@@ -57,9 +57,7 @@ export async function uploadCloudinary(req, res, next) {
   const file = `data:${imageFromRequest.mimetype};base64,${fileBase64}`;
 
   try {
-    const { secure_url, url } = await cloudinary.uploader.upload(file);
-
-    console.log({ url, secure_url });
+    const { secure_url } = await cloudinary.uploader.upload(file);
 
     res.locals.image = secure_url;
   } catch (err) {
