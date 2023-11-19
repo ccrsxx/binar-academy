@@ -1,8 +1,8 @@
 # testing
-/coverage
+**/coverage
 
 # next.js
-/.next/
+**/.next/
 /out/
 
 # production
