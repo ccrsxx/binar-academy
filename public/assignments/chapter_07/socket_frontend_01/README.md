@@ -1,6 +1,6 @@
 ---
-title: Challenge 1 - Rental Car Landing Page
-description: Write an React app
+title: Socket Frontend
+description: Build a simple socket frontend
 nodeProject: true
 ---
 

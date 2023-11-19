@@ -1,14 +1,16 @@
 ---
-title: Socket Backend
-description: Build a simple socket backend
+title: Challenge 01 - Rental Car Backend API
+description: Build a simple backend API for rental cars
 nodeProject: true
 ---
 
 # Simple CRUD application for rental cars
 
-All the documentation for the API can be found on [Swagger](https://dev.risalamin.com/docs).
+All the documentation for the API can be found on [Swagger](https://api-rental-car.risalamin.com/docs).
 
-The API is deployed on [https://dev.risalamin.com](https://dev.risalamin.com), you can hit the endpoints directly from there. It might not be available on the future, so you can also run it locally.
+Here's the separate Repo [https://github.com/ccrsxx/rental-car-backend](https://github.com/ccrsxx/rental-car-backend) for the deployment and CI/CD implementation.
+
+The API is deployed on [https://api-rental-car.risalamin.com](https://api-rental-car.risalamin.com) or backup server at [https://dev.risalamin.com](https://dev.risalamin.com), you can hit the endpoints directly from there.
 
 Here's the ERD for the database:
 
@@ -46,7 +48,7 @@ Here are the steps to run the project locally.
 1. Change directory to the project
 
    ```bash
-   cd binar-academy/public/assignments/chapter_05/challenge_01
+   cd binar-academy/public/assignments/chapter_07/challenge_01
    ```
 
 1. Install dependencies
