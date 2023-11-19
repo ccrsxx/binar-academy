@@ -8,8 +8,6 @@ nodeProject: true
 
 All the documentation for the API can be found on [Swagger](https://api-rental-car.risalamin.com/docs).
 
-Here's the separate Repo [https://github.com/ccrsxx/rental-car-backend](https://github.com/ccrsxx/rental-car-backend) for the deployment and CI/CD implementation.
-
 The API is deployed on [https://api-rental-car.risalamin.com](https://api-rental-car.risalamin.com) or backup server at [https://dev.risalamin.com](https://dev.risalamin.com), you can hit the endpoints directly from there.
 
 Here's the ERD for the database:
